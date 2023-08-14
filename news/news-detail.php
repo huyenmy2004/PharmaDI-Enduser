@@ -96,6 +96,9 @@ $newsList = $news->getData();
             justify-content: right;
             padding: 10px 0;
         }
+        textarea::-webkit-scrollbar {
+  display: none;
+}
     </style>
 </head>
 <body>
@@ -121,8 +124,8 @@ $newsList = $news->getData();
             <div class="news-detail-content">
                 <img src="<?= $news1['newsImage'] ?>" alt="">
                 <span style="font-weight: 600; padding-bottom: 20px; font-size: 18px; "><?= $news1['newsTitle'] ?></span>
-                <div class="news-detail-insdie">
-                <?= $news1['newsContent'] ?></div>
+                <textarea style="height: 500px; resize: none">
+                <?= $news1['newsContent'] ?></textarea>
             </div>
             <div class="news-detail-more-post">
                 <span style="padding: 0 0 20px 0px; font-weight: 600; color: #505050; font-size: 20px">Tin tức khác</span>
