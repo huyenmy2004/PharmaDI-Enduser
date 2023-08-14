@@ -25,7 +25,7 @@ button:hover{
     justify-content: space-between;
     align-items: center;
     color: #505050;
-    padding: 10px 0 20px 0;
+    padding: 0px 0 8px 0;
     border-bottom: 1px solid #d8d8d8;
 }
 .logo{
@@ -106,7 +106,7 @@ button:hover{
         <span style="color: #0071AF">PHARMA</span>
         <span style="color: #15A5E3">DI</span>
     </div>
-    <div class="menu-mid">
+    <!-- <div class="menu-mid">
         <form action="">
             <input type="text" placeholder="Nhập nội dung tìm kiếm..." class="search">
             <button>
@@ -115,7 +115,7 @@ button:hover{
                 </svg>                
             </button>
         </form>
-    </div>
+    </div> -->
     <div class="menu-right">
         <button style="border: 1px solid #0071AF; background-color: #0071AF; color: white; border-radius: 30px; padding: 10px 20px; margin: 10px" id="sign-in">Đăng nhập</button>
         <button style="border: 1px solid #d8d8d8; border-radius: 30px; padding: 10px 20px; margin: 10px" id="sign-up">Đăng ký</button>

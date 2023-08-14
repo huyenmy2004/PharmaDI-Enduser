@@ -25,7 +25,7 @@ button:hover{
     justify-content: space-between;
     align-items: center;
     color: #505050;
-    padding: 10px 0 20px 0;
+    padding: 0px 0 8px 0;
     border-bottom: 1px solid #d8d8d8;
 }
 .logo{
@@ -63,9 +63,7 @@ button:hover{
         }
     }
 }
-.menu-mid:focus-within{
-    border: 1px solid #0071AF;
-}
+
 .search{
     padding: 12px 30px 12px 20px;
     border: 0px;
@@ -125,16 +123,7 @@ button:hover{
         <span style="color: #0071AF">PHARMA</span>
         <span style="color: #15A5E3">DI</span>
     </div>
-    <div class="menu-mid">
-        <form action="">
-            <input type="text" placeholder="Nhập tên sản phẩm..." class="search">
-            <button>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.58332 2.29166C5.55625 2.29166 2.29166 5.55625 2.29166 9.58332C2.29166 13.6104 5.55625 16.875 9.58332 16.875C13.6104 16.875 16.875 13.6104 16.875 9.58332C16.875 5.55625 13.6104 2.29166 9.58332 2.29166ZM1.04166 9.58332C1.04166 4.86589 4.86589 1.04166 9.58332 1.04166C14.3008 1.04166 18.125 4.86589 18.125 9.58332C18.125 11.7171 17.3426 13.6681 16.049 15.1652L18.7753 17.8914C19.0193 18.1355 19.0193 18.5312 18.7753 18.7753C18.5312 19.0193 18.1355 19.0193 17.8914 18.7753L15.1652 16.049C13.6681 17.3426 11.7171 18.125 9.58332 18.125C4.86589 18.125 1.04166 14.3008 1.04166 9.58332Z" fill="#505050"/>
-                </svg>                
-            </button>
-        </form>
-    </div>
+
     <div class="menu-right">
         <div class="menu-right-cart">
             <svg width="24" height="22" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
