@@ -6,6 +6,7 @@ $prod = new Home();
 $prodLeft = $prod->getData(1)[0];
 $prodRight = $prod->getData(10);
 $products = $prod->getListProdNew();
+$prods = $prod->getListProdVN();
 $news = new News();
 $newsList = $news->getData();
 ?>
@@ -82,8 +83,9 @@ $newsList = $news->getData();
 
         .home-sale {
             display: flex;
-            justify-content: center;
-            margin: 0 50px;
+            width: 96%;
+            justify-content: left;
+            margin: 0 80px;
             /* padding: 0 50px; */
         }
 
@@ -105,6 +107,7 @@ $newsList = $news->getData();
             height: max-content;
 
             z-index: 0;
+
             >img {
                 width: 400px;
                 height: auto;
@@ -245,7 +248,7 @@ $newsList = $news->getData();
 
         .product {
             display: flex;
-            width: 23%;
+            width: 25%;
             padding: 0 27px 10px 0;
         }
 
@@ -273,13 +276,14 @@ $newsList = $news->getData();
             margin: 0 50px;
             position: relative;
             margin-bottom: 30px;
+
             >button {
                 position: absolute;
                 right: 30px;
                 bottom: -10px;
                 display: flex;
                 align-items: center;
-                
+
             }
         }
 
@@ -294,49 +298,55 @@ $newsList = $news->getData();
             width: 100%;
             margin: 0 10px;
         }
+
         /* news */
-        .compo-news{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.compo-news:hover{
-    cursor: pointer;
-}
-.news-img{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: max-content;
-}
-.news-title{
-    width: 90%;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 15px 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.news-content{
-    width: 100%;
-    height: 45px;
-    font-size: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-}
-.show-more{
-    color: #505050; 
-    font-style: italic; 
-    font-size: 12px; 
-    outline: none;
-    background-color: transparent;
-    border: none;
-    display: flex;
-    justify-content: right;
-    padding: 10px 0;
-}
+        .compo-news {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .compo-news:hover {
+            cursor: pointer;
+        }
+
+        .news-img {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: max-content;
+        }
+
+        .news-title {
+            width: 90%;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 15px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .news-content {
+            width: 100%;
+            height: 55px;
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+        }
+
+        .show-more {
+            color: #505050;
+            font-style: italic;
+            font-size: 12px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            display: flex;
+            justify-content: right;
+            padding: 10px 0;
+        }
     </style>
 </head>
 
@@ -346,7 +356,8 @@ $newsList = $news->getData();
         <img src="../assets/images/banner.png" alt="">
     </div>
     <div class="home-sale">
-        <div class="home-sale-left" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prodLeft['SKU']?>'">
+        <div class="home-sale-left"
+            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prodLeft['SKU'] ?>'">
             <span class="z-10"
                 style="background-color: #BA0122; height: 41.8px; width: 110px; position: absolute; top: 24.5px; left: -1px; color: white; padding: 10px; font-size: 17px">BÁN
                 CHẠY</span>
@@ -425,7 +436,8 @@ $newsList = $news->getData();
             <div class="title-lowercase">Sản phẩm bán chạy</div>
             <div class="home-sale-right-prod hidden-scroll">
                 <?php foreach ($prodRight as $prod): ?>
-                    <div class="prod" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prod['SKU']?>'">
+                    <div class="prod"
+                        onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prod['SKU'] ?>'">
                         <div class="prod-img">
                             <img src="<?= $prod['imgPath'] ?>" alt="product">
                         </div>
@@ -450,8 +462,9 @@ $newsList = $news->getData();
     <div class="home-product-new">
         <div class="title">SẢN PHẨM MỚI</div>
         <div class="home-product">
-            <?php foreach ($products as $product): ?>
-                <div class="product" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU']?>'">
+            <?php foreach ($products as $prod): ?>
+                <div class="product"
+                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prod['SKU'] ?>'">
                     <div class="prod">
                         <div class="prod-img">
                             <img src="<?= $prod['imgPath'] ?>" alt="product">
@@ -472,7 +485,46 @@ $newsList = $news->getData();
                 </div>
             <?php endforeach; ?>
         </div>
-        <button class="show-more" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php'" style="z-index: 10; font-style: normal; font-weight: 600; font-size: 14px; right:-10px">
+        <button class="show-more"
+            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php'"
+            style="z-index: 10; font-style: normal; font-weight: 600; font-size: 14px; right:-10px">
+            Xem tất cả
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M7.09327 3.6921C7.35535 3.46746 7.74991 3.49781 7.97455 3.75989L12.9745 9.59323C13.1752 9.82728 13.1752 10.1727 12.9745 10.4067L7.97455 16.24C7.74991 16.5021 7.35535 16.5325 7.09327 16.3078C6.83119 16.0832 6.80084 15.6886 7.02548 15.4266L11.6768 9.99997L7.02548 4.57338C6.80084 4.3113 6.83119 3.91674 7.09327 3.6921Z"
+                    fill="#505050" />
+            </svg>
+        </button>
+    </div>
+    <div class="home-product-new">
+        <div class="title">SẢN PHẨM NỘI ĐỊA</div>
+        <div class="home-product">
+            <?php foreach ($prods as $prod): ?>
+                <div class="product"
+                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prod['SKU'] ?>'">
+                    <div class="prod">
+                        <div class="prod-img">
+                            <img src="<?= $prod['imgPath'] ?>" alt="product">
+                        </div>
+                        <div class="product-detail">
+                            <span
+                                style="font-weight: 600; font-size: 12px; padding: 5px 0; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                <?= $prod['prodName'] ?>
+                            </span>
+                            <span style="font-weight: 500; font-size: 12px;">
+                                <?= $prod['prodUnit'] ?>
+                            </span>
+                            <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
+                                <?= number_format($prod['prodPriceSale']) ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <button class="show-more"
+            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php'"
+            style="z-index: 10; font-style: normal; font-weight: 600; font-size: 14px; right:-10px">
             Xem tất cả
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -485,22 +537,25 @@ $newsList = $news->getData();
         <div class="title">TIN TỨC GẦN ĐÂY</div>
         <div class="home-news-post">
             <?php foreach ($newsList as $news): ?>
-            <div class="news" onclick="window.location.href = 'http://localhost/PharmaDI-Enduser/news/news-detail.php?newsId=<?= $news['newsId']?>'">
-                <div class="compo-news">
-                    <div class="news-img">
-                        <img src="<?= $news['newsImage']?>" alt="" style="border-radius: 6px;">
-                        <div class="news-title"><?= $news['newsTitle']?>
+                <div class="news"
+                    onclick="window.location.href = 'http://localhost/PharmaDI-Enduser/news/news-detail.php?newsId=<?= $news['newsId'] ?>'">
+                    <div class="compo-news">
+                        <div class="news-img">
+                            <img src="<?= $news['newsImage'] ?>" alt="" style="border-radius: 6px;">
+                            <div class="news-title">
+                                <?= $news['newsTitle'] ?>
+                            </div>
+                            <div class="news-content">
+                                <?= $news['newsContent'] ?>
+                            </div>
+                            <button class="show-more">Xem thêm...</button>
                         </div>
-                        <div class="news-content">
-                        <?= $news['newsContent']?>
-                        </div>
-                        <button class="show-more">Xem thêm...</button>
                     </div>
                 </div>
-            </div>
             <?php endforeach; ?>
         </div>
-        <button class="show-more" onclick="window.location.href='http://localhost/PharmaDI-Enduser/news/news-list.php'" style="font-style: normal; font-weight: 600; font-size: 14px;">
+        <button class="show-more" onclick="window.location.href='http://localhost/PharmaDI-Enduser/news/news-list.php'"
+            style="font-style: normal; font-weight: 600; font-size: 14px;">
             Xem tất cả
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"

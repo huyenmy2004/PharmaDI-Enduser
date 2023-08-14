@@ -27,7 +27,7 @@
         justify-content: space-between;
         align-items: center;
         color: #505050;
-        padding: 0px 0 8px 0;
+        padding: 10px 0 8px 0;
         border-bottom: 1px solid #d8d8d8;
     }
 
@@ -192,7 +192,7 @@
                         d="M16.3075 7.09327C16.5322 7.35535 16.5018 7.74991 16.2397 7.97455L10.4064 12.9745C10.1724 13.1752 9.82697 13.1752 9.59292 12.9745L3.75959 7.97455C3.49751 7.74991 3.46716 7.35534 3.69179 7.09327C3.91643 6.83119 4.311 6.80084 4.57307 7.02548L9.99966 11.6768L15.4263 7.02548C15.6883 6.80084 16.0829 6.83119 16.3075 7.09327Z"
                         fill="#505050" />
                 </svg>
-                <div class="absolute top-[50px] flex flex-col bg-white z-10 w-[120px] py-1 rounded-[6px] border border-[#d8d8d8] text-[13px] hidden"
+                <div class="absolute top-[50px] flex flex-col bg-white z-1 w-[120px] py-1 rounded-[6px] border border-[#d8d8d8] text-[13px] hidden"
                 id="profile">
                         <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050]" onclick="window.location.href='http://localhost/PharmaDI-Enduser/profile/profile.php'">
                             Cá nhân
