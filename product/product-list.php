@@ -2,11 +2,13 @@
 require_once "../components/header.php";
 require_once "product-pdo.php";
 $product = new Product();
+$products = $product->getData(null);
 if (isset($_GET['prodName']))
     $products = $product->getData($_GET['prodName']);
-else {
-    $products = $product->getData(null);
-}
+if (isset($_GET['cateId']))
+$products = $product->searchCate($_GET['cateId']);
+if (isset($_GET['tagId']))
+$products = $product->searchTag($_GET['tagId']);
 $cate = new Category();
 $cates = $cate->getData();
 $tag = new Tag();
@@ -31,6 +33,7 @@ $tags = $tag->getData();
             padding: 20px 50px;
             background-color: #F4F7FC;
             display: flex;
+            justify-content: center;
         }
 
         .prod-cate {
@@ -85,9 +88,11 @@ $tags = $tag->getData();
             padding-top: 25px;
             display: flex;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .prod-list {
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             margin-left: 20px;
@@ -97,7 +102,7 @@ $tags = $tag->getData();
         .prod-one-in {
             background-color: white;
             padding: 20px;
-            width: 19.1%;
+            width: 23%;
             border-radius: 10px;
             border: 1px solid #D8D8D8;
             margin: 0 0 20px 20px;
@@ -182,6 +187,7 @@ $tags = $tag->getData();
             padding: 8px 16px;
         }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -189,17 +195,17 @@ $tags = $tag->getData();
         <div class="prod-cate">
             <span style="color: #0071AF; font-size: 18px; font-weight: 600; padding: 10px 0 5px 20px;">DANH MỤC</span>
             <hr style="border-top: 1px solid #d8d8d8; width: 200px; margin-bottom: 15px; opacity: 60%">
-            <span class="prod-cate-select" id="all" onclick="toggleSelectCate('all')">Tất cả sản phẩm</span>
+            <span class="<?= isset($_GET['cateId']) ? 'prod-cate-unselect' : 'prod-cate-select' ?>" id="all" onclick="window.location.href= 'http://localhost/PharmaDI-Enduser/product/product-list.php'">Tất cả sản phẩm</span>
             <?php foreach ($cates as $cate): ?>
-                <span class="prod-cate-unselect" id="<?= $cate['cateId'] ?>"
-                    onclick="toggleSelectCate('<?= $cate['cateId'] ?>')"><?= $cate['cateName'] ?></span>
+                <span class="<?= isset($_GET['cateId']) ? ($_GET['cateId'] == $cate['cateId'] ? 'prod-cate-select' : 'prod-cate-unselect') : 'prod-cate-unselect' ?>" id="<?= $cate['cateId'] ?>"
+                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?cateId=<?= $cate['cateId'] ?>'"><?= $cate['cateName'] ?></span>
             <?php endforeach; ?>
         </div>
         <div class="prod-list-right">
             <div class="prod-breadcrumb">
                 <div style="display: flex">
                     <div class="prod-breadcrumb-black">
-                        <span onclick="link('http://localhost/PharmaDI-Enduser/home/home.php')">Trang chủ</span>
+                        <span onclick="window.location.href = 'http://localhost/PharmaDI-Enduser/home/home.php'">Trang chủ</span>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.09327 3.6921C7.35535 3.46746 7.74991 3.49781 7.97455 3.75989L12.9745 9.59323C13.1752 9.82728 13.1752 10.1727 12.9745 10.4067L7.97455 16.24C7.74991 16.5021 7.35535 16.5325 7.09327 16.3078C6.83119 16.0832 6.80084 15.6886 7.02548 15.4266L11.6768 9.99997L7.02548 4.57338C6.80084 4.3113 6.83119 3.91674 7.09327 3.6921Z"
@@ -224,17 +230,16 @@ $tags = $tag->getData();
                     </form>
                 </div>
             </div>
-            <div class="prod-tag">
+            <div class="prod-tag ">
                 <?php foreach ($tags as $tag): ?>
-                    <span
-                        style="padding: 10px 20px; background-color: #EFFAFF; border: 1px solid #0071AF; border-radius: 30px 0; font-size: 12px; color: #0071AF; margin: 5px"
-                        id="<?= $tag['tagId'] ?>"> <?= $tag['tagName'] ?>
+                    <span class="px-[20px] py-[10px] border bodder-solid border-[#0071AF] rounded-tl-[30px] rounded-br-[30px] text-[12px] text-[#0071AF] m-[5px] <?= isset($_GET['tagId']) ? ($_GET['tagId'] == $tag['tagId'] ? 'text-white bg-[#0071AF]' : ' ') : ' ' ?>"
+                        id="<?= $tag['tagId'] ?>" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?tagId=<?= $tag['tagId'] ?>'"> <?= $tag['tagName'] ?>
                     </span>
                 <?php endforeach; ?>
             </div>
             <div class="prod-list">
                 <?php foreach ($products as $product): ?>
-                    <div class="prod-one-in">
+                    <div class="prod-one-in" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU'] ?>'">
                         <div class="img">
                             <img src="<?= $product['imgPath'] ?>" alt="">
                         </div>

@@ -13,6 +13,29 @@ class Product extends Connection
         $select->execute();
         return $select->fetchAll();
     }
+    public function searchCate($cate)
+    {
+        $sql = "SELECT product.*, tagName, imgPath
+        FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN product_img ON product_img.SKU = product.SKU
+        JOIN category ON category.cateId = product.cateId
+        WHERE (prodStatus = 1) " . ($cate != null ? "AND (category.cateId = '$cate')"  : ' ') .
+        "GROUP BY product.SKU;";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
+    public function searchTag($tag)
+    {
+        $sql = "SELECT product.*, tagName, imgPath
+        FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN product_img ON product_img.SKU = product.SKU
+        WHERE (prodStatus = 1) " . ($tag != null ? "AND (tag.tagId = '$tag')"  : ' ') .
+        "GROUP BY product.SKU;";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
 }
 class Brand extends Connection
 {
