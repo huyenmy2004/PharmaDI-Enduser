@@ -166,27 +166,27 @@ button:hover{
     </div>
 </div>
 <div class="menu-bottom">
-    <a href="http://localhost/PharmaDI/layout/home.php" class="menu-active" id="home" onclick="menuActive('home')">TRANG CHỦ</a>
-    <a href="http://localhost/PharmaDI/layout/product.php" id="product" onclick="menuActive('product')">SẢN PHẨM</a>
-    <a href="http://localhost/PharmaDI/layout/home.php" id="brand" onclick="menuActive('brand')">THƯƠNG HIỆU</a>
-    <a href="http://localhost/PharmaDI/layout/news-list.php" id="news" onclick="menuActive('news')">TIN TỨC</a>
+    <a href="http://localhost/PharmaDI-Enduser/home.php" class="menu-active" id="home" onclick="menuActive('home')">TRANG CHỦ</a>
+    <a href="http://localhost/PharmaDI-Enduser/product/product-list.php" id="product" onclick="menuActive('product')">SẢN PHẨM</a>
+    <a href="http://localhost/PharmaDI-Enduser/brand/brand-list.php" id="brand" onclick="menuActive('brand')">THƯƠNG HIỆU</a>
+    <a href="http://localhost/PharmaDI-Enduser/news/news-list.php" id="news" onclick="menuActive('news')">TIN TỨC</a>
 </div>
 </div>
 <script>
     switch (window.location.href) {
-        case "http://localhost/PharmaDI/layout/home.php":
+        case "http://localhost/PharmaDI-Enduser/home/home.php":
             document.querySelector('.menu-active').classList.toggle('menu-active')
             document.getElementById('home').classList.add('menu-active')
             break;
-        case "http://localhost/PharmaDI/layout/product.php":
+        case "http://localhost/PharmaDI-Enduser/product/product-list.php":
             document.querySelector('.menu-active').classList.toggle('menu-active')
             document.getElementById('product').classList.add('menu-active')
             break;
-        case "http://localhost/PharmaDI/layout/brand.php":
+        case "http://localhost/PharmaDI-Enduser/brand/brand-list.php":
             document.querySelector('.menu-active').classList.toggle('menu-active')
             document.getElementById('brand').classList.add('menu-active')
             break;
-        case "http://localhost/PharmaDI/layout/news-list.php":
+        case "http://localhost/PharmaDI-Enduser/news/news-list.php":
             document.querySelector('.menu-active').classList.toggle('menu-active')
             document.getElementById('news').classList.add('menu-active')
             break;    
