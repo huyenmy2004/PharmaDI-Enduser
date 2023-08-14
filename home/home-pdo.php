@@ -8,6 +8,7 @@ class Home extends Connection{
         JOIN brand ON product.brandId = brand.brandId
         JOIN category ON product.cateId = category.cateId
         JOIN product_img ON product_img.SKU = product.SKU
+        WHERE prodStatus = 1
         GROUP BY SKU
         ORDER BY prodSellNumber desc
         LIMIT $number";
@@ -22,6 +23,7 @@ class Home extends Connection{
         JOIN brand ON product.brandId = brand.brandId
         JOIN category ON product.cateId = category.cateId
         JOIN product_img ON product_img.SKU = product.SKU
+        WHERE prodStatus = 1
         GROUP BY SKU
         ORDER BY prodSellNumber desc
         LIMIT 8";
