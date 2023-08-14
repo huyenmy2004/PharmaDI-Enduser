@@ -166,7 +166,7 @@ button:hover{
     </div>
 </div>
 <div class="menu-bottom">
-    <a href="http://localhost/PharmaDI-Enduser/home.php" class="menu-active" id="home" onclick="menuActive('home')">TRANG CHỦ</a>
+    <a href="http://localhost/PharmaDI-Enduser/home/home.php" class="menu-active" id="home" onclick="menuActive('home')">TRANG CHỦ</a>
     <a href="http://localhost/PharmaDI-Enduser/product/product-list.php" id="product" onclick="menuActive('product')">SẢN PHẨM</a>
     <a href="http://localhost/PharmaDI-Enduser/brand/brand-list.php" id="brand" onclick="menuActive('brand')">THƯƠNG HIỆU</a>
     <a href="http://localhost/PharmaDI-Enduser/news/news-list.php" id="news" onclick="menuActive('news')">TIN TỨC</a>
