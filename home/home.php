@@ -104,6 +104,7 @@ $newsList = $news->getData();
             max-width: 40%;
             height: max-content;
 
+            z-index: 0;
             >img {
                 width: 400px;
                 height: auto;
@@ -216,7 +217,7 @@ $newsList = $news->getData();
         }
 
         .title {
-            padding: 30px 0 30px 30px;
+            margin: 30px 0 30px 30px;
             font-weight: 600;
             color: #505050;
         }
@@ -225,7 +226,6 @@ $newsList = $news->getData();
             position: relative;
             margin: 0 50px;
             width: 90%;
-
             >button {
                 position: absolute;
                 right: 40px;
@@ -272,13 +272,14 @@ $newsList = $news->getData();
             padding: 0;
             margin: 0 50px;
             position: relative;
-
+            margin-bottom: 30px;
             >button {
                 position: absolute;
-                right: 40px;
-                bottom: -30px;
+                right: 30px;
+                bottom: -10px;
                 display: flex;
                 align-items: center;
+                
             }
         }
 
@@ -333,7 +334,7 @@ $newsList = $news->getData();
     background-color: transparent;
     border: none;
     display: flex;
-    justify-content: left;
+    justify-content: right;
     padding: 10px 0;
 }
     </style>
@@ -345,11 +346,11 @@ $newsList = $news->getData();
         <img src="../assets/images/banner.png" alt="">
     </div>
     <div class="home-sale">
-        <div class="home-sale-left">
-            <span
-                style="background-color: #BA0122; height: 22px; width: 90px; position: absolute; top: 24.5px; left: -1px; color: white; padding: 10px; font-size: 17px">BÁN
+        <div class="home-sale-left" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prodLeft['SKU']?>'">
+            <span class="z-10"
+                style="background-color: #BA0122; height: 41.8px; width: 110px; position: absolute; top: 24.5px; left: -1px; color: white; padding: 10px; font-size: 17px">BÁN
                 CHẠY</span>
-            <div style="position: absolute; left: -10px">
+            <div style="position: absolute; left: -10px" class="z-10">
                 <svg width="10" height="62" viewBox="0 0 12 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M0 58.0056C2.54174 60.4649 6.60001 62.3737 11.461 63.3333V44.0115H2.60662C1.61954 44.6275 0.744681 45.3008 0 46.0213V58.0056Z"
@@ -386,10 +387,10 @@ $newsList = $news->getData();
                     </span>
                     <div class="prod-price">
                         <span class="price-sale">
-                            <?= $prodLeft['prodPriceSale'] ?>
+                            <?= number_format($prodLeft['prodPriceSale']) ?>
                         </span>
                         <span class="price-orgin">
-                            <?= $prodLeft['prodPrice'] ?>
+                            <?= number_format($prodLeft['prodPrice']) ?>
                         </span>
                     </div>
                 </div>
@@ -424,7 +425,7 @@ $newsList = $news->getData();
             <div class="title-lowercase">Sản phẩm bán chạy</div>
             <div class="home-sale-right-prod hidden-scroll">
                 <?php foreach ($prodRight as $prod): ?>
-                    <div class="prod">
+                    <div class="prod" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prod['SKU']?>'">
                         <div class="prod-img">
                             <img src="<?= $prod['imgPath'] ?>" alt="product">
                         </div>
@@ -437,7 +438,7 @@ $newsList = $news->getData();
                                 <?= $prod['prodUnit'] ?>
                             </span>
                             <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= $prod['prodPriceSale'] ?>
+                                <?= number_format($prod['prodPriceSale']) ?>
                             </span>
                         </div>
                     </div>
@@ -450,7 +451,7 @@ $newsList = $news->getData();
         <div class="title">SẢN PHẨM MỚI</div>
         <div class="home-product">
             <?php foreach ($products as $product): ?>
-                <div class="product">
+                <div class="product" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU']?>'">
                     <div class="prod">
                         <div class="prod-img">
                             <img src="<?= $prod['imgPath'] ?>" alt="product">
@@ -464,14 +465,14 @@ $newsList = $news->getData();
                                 <?= $prod['prodUnit'] ?>
                             </span>
                             <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= $prod['prodPriceSale'] ?>
+                                <?= number_format($prod['prodPriceSale']) ?>
                             </span>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <button class="show-more" onclick="" style="font-style: normal; font-weight: 600; font-size: 14px;">
+        <button class="show-more" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php'" style="z-index: 10; font-style: normal; font-weight: 600; font-size: 14px; right:-10px">
             Xem tất cả
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -484,8 +485,8 @@ $newsList = $news->getData();
         <div class="title">TIN TỨC GẦN ĐÂY</div>
         <div class="home-news-post">
             <?php foreach ($newsList as $news): ?>
-            <div class="news">
-                <div class="compo-news" onclick="link('http://localhost/PharmaDI/layout/news-detail.php')">
+            <div class="news" onclick="window.location.href = 'http://localhost/PharmaDI-Enduser/news/news-detail.php?newsId=<?= $news['newsId']?>'">
+                <div class="compo-news">
                     <div class="news-img">
                         <img src="<?= $news['newsImage']?>" alt="" style="border-radius: 6px;">
                         <div class="news-title"><?= $news['newsTitle']?>
@@ -499,7 +500,7 @@ $newsList = $news->getData();
             </div>
             <?php endforeach; ?>
         </div>
-        <button class="show-more" onclick="" style="font-style: normal; font-weight: 600; font-size: 14px;">
+        <button class="show-more" onclick="window.location.href='http://localhost/PharmaDI-Enduser/news/news-list.php'" style="font-style: normal; font-weight: 600; font-size: 14px;">
             Xem tất cả
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
