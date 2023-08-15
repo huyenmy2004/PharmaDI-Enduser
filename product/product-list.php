@@ -218,7 +218,7 @@ $tags = $tag->getData();
                 </div>
                 <div class="menu-mid">
                     <form action="" style="background: white; border-radius: 8px" method="GET">
-                        <input type="text" name="prodName" placeholder="Nhập tên sản phẩm..." class="search">
+                        <input type="text" name="prodName" placeholder="Nhập tên sản phẩm..." class="search text-[#505050]">
                         <button>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
