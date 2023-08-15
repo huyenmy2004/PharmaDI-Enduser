@@ -38,6 +38,7 @@ class Query extends connection {
         -- ON product_img.SKU = product.SKU 
         INNER JOIN product_order ON product.SKU = product_order.SKU 
         INNER JOIN orders ON product_order.orderId = orders.orderId
+        INNER JOIN product_img ON product_img.SKU = product.SKU
         GROUP BY orders.orderId";
         $stmt = $this->prepareSQL($sql);
         $stmt->execute();
@@ -73,7 +74,8 @@ class Query extends connection {
     }
 
     public function delete($data) {
-        $sql = "DELETE FROM products where id = :id";
+        $sql = "DELETE FROM product_order 
+         WHERE orderId = :id";
         $stmt = $this->prepareSQL($sql);
         $stmt->execute($data);
     }
@@ -84,10 +86,17 @@ class Query extends connection {
         $stmt->execute($data);
     }
 
+    public function updateConfirmStatus($data) {
+        $sql = "UPDATE orders SET orderStatus = 2 WHERE orderId = :id";
+        $stmt = $this->prepareSQL($sql);
+        $stmt->execute($data);
+    }
+
     public function select($data) {
         $sql = "SELECT * FROM product INNER JOIN product_order ON product.SKU = product_order.SKU 
         INNER JOIN orders ON product_order.orderId = orders.orderId 
         INNER JOIN customer ON orders.cusId = customer.cusId
+        INNER JOIN product_img ON product_img.SKU = product.SKU
         INNER JOIN brand ON brand.brandId = product.brandId WHERE orders.orderId  = '$data'";
         $stmt = $this->prepareSQL($sql);
         $stmt->execute();
@@ -98,6 +107,7 @@ class Query extends connection {
     $sql = "SELECT * FROM product INNER JOIN product_order ON product.SKU = product_order.SKU 
     INNER JOIN orders ON product_order.orderId = orders.orderId 
     INNER JOIN customer ON orders.cusId = customer.cusId
+    -- INNER JOIN product_img ON product_img.SKU = product.SKU
     INNER JOIN brand ON brand.brandId = product.brandId WHERE orders.orderId  = '$data' GROUP BY product.brandId";
     $stmt = $this->prepareSQL($sql);
     $stmt->execute();

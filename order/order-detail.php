@@ -1,5 +1,6 @@
 <?php
     require_once '../connection/pdo.php';
+    require_once '../components/header.php';
     $id = $_GET['id'];
     $getinf = new Query();
     $products = $getinf->select($id);
@@ -24,7 +25,7 @@
 </head>
 <body>
     <!-- MENU  -->
-    <div class="menu">
+    <!-- <div class="menu">
         <div class="menu-top">
             <div class="img">
                 <img src="../asset/image/logo.png" alt="logo">
@@ -50,7 +51,7 @@
             <a href="">THƯƠNG HIỆU</a>
             <a href="">TIN TỨC</a>
         </div>
-    </div>
+    </div> -->
     <!-- CONTENT  -->
     
     <div class="order-list">
@@ -121,7 +122,7 @@
                 foreach ($brands as $brand) :   
             ?>
             <div class="order-list-brand">
-                <div class="order-list-brand-img"><img src="./image/image 120.png" alt=""></div>
+                <div class="order-list-brand-img"><img src="<?= $brand['brandLogo'] ?>" alt=""></div>
                 <div>
                     <ul class="order-list-brand-title">
                         <li class="order-list-brand-title-name">Tên sản phẩm</li>
@@ -136,7 +137,7 @@
                 ?>
                 <div class="order-list-brand-detail">
                     <div class="order-list-brand-item">
-                        <img class="order-list-brand-item-img" src="./image/Rectangle 275.png" alt="">
+                        <img class="order-list-brand-item-img" src="<?= $product['imgPath'] ?>" alt="">
                         <div class="order-list-brand-item-des">
                             <span class="order-list-brand-item-title"><?= $product['prodName'] ?></span>
                             <p class="order-list-brand-item-des"><?= $product['prodDescrip'] ?></p>
@@ -195,7 +196,7 @@
     </div> 
     
     <!-- FOOTER  -->
-    <div class="footer">
+    <!-- <div class="footer">
         <div class="footer-top">
             <div class="footer-left">
                 <div class="footer-left-top">
@@ -220,7 +221,8 @@
             </div>
         </div>
         <div class="footer-bottom">© Copyright PharmaDi. All rights reserved.</div>
-    </div>
+    </div> -->
     <script src="app.js"></script>
+    <?php require_once '../components/footer.php'; ?>
 </body>
 </html>

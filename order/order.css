@@ -68,7 +68,7 @@
   }
 
   .order-list-item-img {
-    width: 72px;
+    object-fit: cover;
     height: 72px;
     border-radius: 8px;
     background: url(<path-to-image>), lightgray 50% / cover no-repeat;

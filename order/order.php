@@ -1,5 +1,6 @@
 <?php
     require_once '../connection/pdo.php';
+    require_once '../components/header.php';
     $getinf = new Query();
     $products = $getinf->all();
 ?>
@@ -15,7 +16,7 @@
     <title>Order</title>
 </head>
 <body>
-    <div class="menu">
+    <!-- <div class="menu">
         <div class="menu-top">
             <div class="img">
                 <img src="../asset/image/logo.png" alt="logo">
@@ -41,7 +42,7 @@
             <a href="">THƯƠNG HIỆU</a>
             <a href="">TIN TỨC</a>
         </div>
-    </div>
+    </div> -->
 
     <div class="order-list">
         <h1 class="order-list-title">Danh sách đơn hàng</h1>
@@ -89,7 +90,7 @@
                         <div class="order-list-detail">
                             <div class="order-list-item">
                                 <div class="order-list-item-des">
-                                    <img class="order-list-item-img" src="image/Rectangle 275.png" alt="">
+                                    <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                     <ul class="order-list-item-inf">
                                         <li><button class="order-list-item-status">
                                             <?php if($product['orderStatus'] == 1) echo "Chờ xác nhận";
@@ -179,12 +180,12 @@
         <!-- search wait -->
 
         <div class="order-lists">
-            <div class="order-list-box active">
+            <div class="order-list-box">
                 <?php foreach ($products as $product) : if($product['orderStatus'] == 1) {?>
                     <div class="order-list-detail">
                         <div class="order-list-item">
                             <div class="order-list-item-des">
-                                <img class="order-list-item-img" src="image/Rectangle 275.png" alt="">
+                                <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Chờ xác nhận" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
@@ -203,12 +204,12 @@
         <!-- search confirm -->
 
         <div class="order-lists">
-            <div class="order-list-box active">
+            <div class="order-list-box">
                 <?php foreach ($products as $product) : if($product['orderStatus'] == 2) {?>
                     <div class="order-list-detail">
                         <div class="order-list-item">
                             <div class="order-list-item-des">
-                                <img class="order-list-item-img" src="image/Rectangle 275.png" alt="">
+                                <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Đã xác nhận" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
@@ -227,12 +228,12 @@
         <!-- search on_way -->
 
         <div class="order-lists">
-            <div class="order-list-box active">
+            <div class="order-list-box">
                 <?php foreach ($products as $product) : if($product['orderStatus'] == 3) {?>
                     <div class="order-list-detail">
                         <div class="order-list-item">
                             <div class="order-list-item-des">
-                                <img class="order-list-item-img" src="image/Rectangle 275.png" alt="">
+                                <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Đang giao hàng" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
@@ -251,12 +252,12 @@
          <!-- search receive -->
 
          <div class="order-lists">
-            <div class="order-list-box active">
+            <div class="order-list-box">
                 <?php foreach ($products as $product) : if($product['orderStatus'] == 4) {?>
                     <div class="order-list-detail">
                         <div class="order-list-item">
                             <div class="order-list-item-des">
-                                <img class="order-list-item-img" src="image/Rectangle 275.png" alt="">
+                                <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Đã giao hàng" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
@@ -275,12 +276,12 @@
         <!-- search cancel -->
 
         <div class="order-lists">
-            <div class="order-list-box active">
+            <div class="order-list-box">
                 <?php foreach ($products as $product) : if($product['orderStatus'] == 5) {?>
                     <div class="order-list-detail">
                         <div class="order-list-item">
                             <div class="order-list-item-des">
-                                <img class="order-list-item-img" src="image/Rectangle 275.png" alt="">
+                                <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Huỷ đơn hàng" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
@@ -297,7 +298,7 @@
         </div> 
         
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
         <div class="footer-top">
             <div class="footer-left">
                 <div class="footer-left-top">
@@ -322,7 +323,8 @@
             </div>
         </div>
         <div class="footer-bottom">© Copyright PharmaDi. All rights reserved.</div>
-    </div>
+    </div> -->
     <script src="app.js"></script>
+    <?php require_once '../components/footer.php'; ?>
 </body>
 </html>
