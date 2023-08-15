@@ -1,0 +1,100 @@
+.wrapper {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 800px; /* Điều chỉnh giá trị max-width tùy ý */
+    text-align: left;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.info {
+    text-align: left;
+}
+
+.info p {
+    margin-bottom: 10px;
+}
+
+.label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    margin-right: 20px;
+    color: rgba(80, 80, 80, 1);
+    font-size: 12px;
+}
+
+.value {
+    display: inline-block;
+    width: 160px;
+    text-align: left;
+    color: rgba(80, 80, 80, 1);
+    font-size: 12px;
+}
+
+h4 {
+    color: rgba(0, 113, 175, 1);
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+button,
+input[type="submit"] {
+    border: none;
+    outline: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn_cancel,
+.btn_update {
+    padding: 8px 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #000;
+    border-radius: 18px;
+}
+
+.btn_update {
+    background-color: rgba(0, 113, 175, 1);
+    color: #fff;
+}
+
+.btn_cancel {
+    border: 1px solid #ccc;
+    background-color: #d4d1d1; 
+    color: #000;
+}
+
+.input {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 6px;
+    margin-bottom: 10px;
+    width: 250px;
+    color: #636363;
+}
