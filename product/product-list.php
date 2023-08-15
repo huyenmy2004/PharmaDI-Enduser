@@ -218,7 +218,7 @@ $tags = $tag->getData();
                 </div>
                 <div class="menu-mid">
                     <form action="" style="background: white; border-radius: 8px" method="GET">
-                        <input type="text" name="prodName" placeholder="Nhập tên sản phẩm..." class="text-[#505050] search">
+                        <input type="text" name="prodName" placeholder="Nhập tên sản phẩm..." class="search text-[#505050]">
                         <button>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -239,8 +239,8 @@ $tags = $tag->getData();
             </div>
             <div class="prod-list">
                 <?php foreach ($products as $product): ?>
-                    <div class="prod-one-in" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU'] ?>'">
-                        <div class="img">
+                    <div class="prod-one-in">
+                        <div class="img" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU'] ?>'">
                             <img src="<?= $product['imgPath'] ?>" alt="">
                         </div>
                         <div style="display: flex; flex-direction: column; color: 505050">
@@ -267,7 +267,7 @@ $tags = $tag->getData();
                         </div>
                         <form action="">
                             <div class="plus-number">
-                                <button>
+                                <button type='button' onclick="decrease('quantity-cart-<?= $product['SKU']?>')">
                                     <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -275,8 +275,8 @@ $tags = $tag->getData();
                                             fill="#505050" />
                                     </svg>
                                 </button>
-                                <input type="number">
-                                <button>
+                                <input type="number" value=0 id="quantity-cart-<?= $product['SKU']?>" style="font-size: 13px; text-align: center">
+                                <button type='button' onclick="increase('quantity-cart-<?= $product['SKU']?>')">
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -288,7 +288,7 @@ $tags = $tag->getData();
                                     </svg>
                                 </button>
                             </div>
-                            <button type="submit">Thêm vào giỏ hàng</button>
+                            <button type="submit" >Thêm vào giỏ hàng</button>
                         </form>
                     </div>
                 <?php endforeach; ?>
@@ -304,4 +304,12 @@ $tags = $tag->getData();
         document.getElementById(id).classList.toggle('prod-cate-select')
         document.getElementById(id).classList.toggle('prod-cate-unselect')
     }
+
+    function increase(id) {
+        document.getElementById(id).value = parseInt(document.getElementById(id).value) + 1
+    }
+    function decrease(id) {
+        document.getElementById(id).value = parseInt(document.getElementById(id).value) - 1
+    }
+
 </script>

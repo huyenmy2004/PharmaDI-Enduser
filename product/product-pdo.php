@@ -13,6 +13,17 @@ class Product extends Connection
         $select->execute();
         return $select->fetchAll();
     }
+    public function getDetailData($id)
+    {
+        $sql = "SELECT product.*, tagName, imgPath, cateName
+        FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN product_img ON product_img.SKU = product.SKU
+        JOIN category ON product.cateId = category.cateId
+        WHERE product.SKU = '$id'";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
     public function searchCate($cate)
     {
         $sql = "SELECT product.*, tagName, imgPath
@@ -31,6 +42,17 @@ class Product extends Connection
         FROM product JOIN tag ON product.tagId = tag.tagId
         JOIN product_img ON product_img.SKU = product.SKU
         WHERE (prodStatus = 1) " . ($tag != null ? "AND (tag.tagId = '$tag')"  : ' ') .
+        "GROUP BY product.SKU;";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
+    public function getDataByBrand($brand)
+    {
+        $sql = "SELECT product.*, imgPath
+        FROM product JOIN brand ON product.brandId = brand.brandId
+        JOIN product_img ON product_img.SKU = product.SKU
+        WHERE (prodStatus = 1) " . "AND product.brandId = '$brand'" .
         "GROUP BY product.SKU;";
         $select = $this->prepareSQL($sql);
         $select->execute();
