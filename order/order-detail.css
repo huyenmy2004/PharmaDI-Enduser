@@ -181,6 +181,13 @@
     margin-top: 15px;
   }
 
+  .order-list-brand-img span {
+    font-size: 18px; 
+    color: #505050; 
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
   .order-list-brand-item-price {
     color: var(--d-9-d-9-d-9, #0071AF);
     font-family: Roboto;
@@ -196,6 +203,12 @@
     margin-top: 40px;
     padding: 5px 20px;
     margin-bottom: 30px;
+  }
+
+  .order-list-brand-item-img {
+    object-fit: contain;
+    width: 75px;
+    height: 75px;
   }
 
   .order-detail-item-total-num {

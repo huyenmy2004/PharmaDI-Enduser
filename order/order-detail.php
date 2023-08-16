@@ -122,7 +122,7 @@
                 foreach ($brands as $brand) :   
             ?>
             <div class="order-list-brand">
-                <div class="order-list-brand-img"><img src="<?= $brand['brandLogo'] ?>" alt=""></div>
+                <div class="order-list-brand-img"><img src="" alt=""><span><?= $brand['brandName'] ?></span></div>
                 <div>
                     <ul class="order-list-brand-title">
                         <li class="order-list-brand-title-name">Tên sản phẩm</li>
