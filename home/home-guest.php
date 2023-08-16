@@ -1,7 +1,6 @@
 <!-- MENU  -->
 <?php
-require_once "../check-login.php";
-require_once "../components/header.php";
+require_once "../components/header-guest.php";
 require_once "home-pdo.php";
 $prod = new Home();
 $prodLeft = $prod->getData(1)[0];
@@ -10,6 +9,7 @@ $products = $prod->getListProdNew();
 $prods = $prod->getListProdVN();
 $news = new News();
 $newsList = $news->getData();
+
 ?>
 
 <!DOCTYPE html>
@@ -397,46 +397,17 @@ $newsList = $news->getData();
                     <span class="prod-cate">
                         <?= $prodLeft['cateName'] ?>
                     </span>
-                    <div class="prod-price">
-                        <span class="price-sale">
-                            <?= number_format($prodLeft['prodPriceSale']) ?>
-                        </span>
-                        <span class="price-orgin">
-                            <?= number_format($prodLeft['prodPrice']) ?>
-                        </span>
-                    </div>
+                    <span style="background-color: #EFFAFF; border: 1px solid #15A5E3; font-size: 13px; color: #15A5E3; padding: 5px 10px;width: max-content; border-radius: 30px; margin: 10px 0 8px 0; display: flex; justify-content: center">Đăng nhập để xem giá</span>
+
                 </div>
-                <form action="">
-                    <div class="plus-number">
-                        <button>
-                            <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11 1.62295C11 2.49263 10.4317 2.67285 9.73077 2.67285L1.26923 2.67227C0.568254 2.67227 1.50475e-08 2.49215 8.74709e-08 1.62247C1.59894e-07 0.752783 0.568255 0.572645 1.26923 0.572645L9.73077 0.572646C10.4317 0.572646 11 0.753261 11 1.62295Z"
-                                    fill="#505050" />
-                            </svg>
-                        </button>
-                        <input type="number">
-                        <button>
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M5.99942 0.323242C6.82784 0.323242 6.99951 0.919798 6.99951 1.65569L6.99896 10.5386C6.99896 11.2745 6.82739 11.8711 5.99896 11.8711C5.17053 11.8711 4.99894 11.2745 4.99894 10.5386L4.99894 1.65569C4.99894 0.919798 5.17099 0.323242 5.99942 0.323242Z"
-                                    fill="#505050" />
-                                <path
-                                    d="M11.499 6.09658C11.499 6.96627 10.9308 7.14648 10.2298 7.14648L1.76825 7.14591C1.06728 7.14591 0.499023 6.96579 0.499024 6.0961C0.499024 5.22642 1.06728 5.04628 1.76825 5.04628L10.2298 5.04628C10.9308 5.04628 11.499 5.22689 11.499 6.09658Z"
-                                    fill="#505050" />
-                            </svg>
-                        </button>
-                    </div>
-                    <button type="submit">Thêm vào giỏ hàng</button>
-                </form>
+                
             </div>
         </div>
         <div class="home-sale-right">
             <div class="title-lowercase">Sản phẩm bán chạy</div>
             <div class="home-sale-right-prod hidden-scroll">
                 <?php foreach ($prodRight as $prod): ?>
+
                     <div class="prod"
                         onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prod['SKU'] ?>'">
                         <div class="prod-img">
@@ -450,9 +421,8 @@ $newsList = $news->getData();
                             <span style="font-weight: 500; font-size: 12px;">
                                 <?= $prod['prodUnit'] ?>
                             </span>
-                            <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= number_format($prod['prodPriceSale']) ?>
-                            </span>
+                            <span style="background-color: #EFFAFF; border: 1px solid #15A5E3; font-size: 10px; color: #15A5E3; padding: 5px 10px;width: max-content; border-radius: 30px; margin: 10px 0 8px 0; display: flex; justify-content: center">Đăng nhập để xem giá</span>
+
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -478,9 +448,7 @@ $newsList = $news->getData();
                             <span style="font-weight: 500; font-size: 12px;">
                                 <?= $prod['prodUnit'] ?>
                             </span>
-                            <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= number_format($prod['prodPriceSale']) ?>
-                            </span>
+                            <span style="background-color: #EFFAFF; border: 1px solid #15A5E3; font-size: 10px; color: #15A5E3; padding: 5px 10px;width: max-content; border-radius: 30px; margin: 10px 0 8px 0; display: flex; justify-content: center">Đăng nhập để xem giá</span>
                         </div>
                     </div>
                 </div>
@@ -515,9 +483,8 @@ $newsList = $news->getData();
                             <span style="font-weight: 500; font-size: 12px;">
                                 <?= $prod['prodUnit'] ?>
                             </span>
-                            <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= number_format($prod['prodPriceSale']) ?>
-                            </span>
+                            <span style="background-color: #EFFAFF; border: 1px solid #15A5E3; font-size: 10px; color: #15A5E3; padding: 5px 10px;width: max-content; border-radius: 30px; margin: 10px 0 8px 0; display: flex; justify-content: center">Đăng nhập để xem giá</span>
+
                         </div>
                     </div>
                 </div>
@@ -569,8 +536,55 @@ $newsList = $news->getData();
     <!-- POPUP SIGN IN -->
     <?php require "sign-in.php" ?>
     <?php require "sign-up.php" ?>
-    <!-- FOOTER  -->
     <?php require_once "../components/footer.php"; ?>
 </body>
+<!-- FOOTER  -->
 
 </html>
+<script>
+    // POPUP SIGN IN
+    var signInButton = document.querySelector('#sign-in');
+    var signInPopup = document.querySelector('.sign-in-bgr');
+    var signInBgr = document.querySelector('.sign-in-bgr');
+    function toggleSignIn() {
+        signInPopup.classList.toggle('hide')
+    }
+    signInButton.addEventListener('click', toggleSignIn);
+    signInBgr.addEventListener('click', function (event) {
+        if (event.target == event.currentTarget) {
+            signInPopup.classList.toggle('slow-motion');
+            setTimeout(function () {
+                signInPopup.classList.toggle('slow-motion');
+                signInPopup.classList.toggle('hide')
+            }, 400)
+        }
+    });
+
+    // POPUP SIGN UP
+    var signUpButton = document.querySelector('#sign-up');
+    var signUpPopup = document.querySelector('.sign-up-bgr');
+    var signUpBgr = document.querySelector('.sign-up-bgr');
+    function toggleSignUp() {
+        signUpPopup.classList.toggle('hide')
+    }
+    signUpButton.addEventListener('click', toggleSignUp);
+    signUpBgr.addEventListener('click', function (event) {
+        if (event.target == event.currentTarget) {
+            signUpPopup.classList.toggle('slow-motion');
+            setTimeout(function () {
+                signUpPopup.classList.toggle('slow-motion');
+                signUpPopup.classList.toggle('hide')
+            }, 400)
+        }
+    });
+    function showPass(id) {
+        var pass = document.getElementById(id);
+        if (pass.type == 'password') {
+            pass.type = 'text';
+        }
+        else {
+            pass.type = 'password';
+        }
+    }
+
+</script>

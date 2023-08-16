@@ -1,3 +1,8 @@
+<?php
+require_once "../cart/cart-pdo.php"; 
+$cart = new Cart();
+$cartTotalNum = $cart->totalNum();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -173,9 +178,9 @@
                 left: 22px;
                 top: 1px;
                 font-size: 10px;
-                color: #FFFFFF;">09</span>
+                color: #FFFFFF;"><?= $cartTotalNum['total'] ?></span>
                 <span style="font-size: 13px; padding-left: 12px;"
-                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/cart/cart.php'">Giỏ hàng</span>
+                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/cart/cart-list.php'">Giỏ hàng</span>
             </div>
             <div class="menu-right-account"  onclick="showDroplist('profile')">
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
