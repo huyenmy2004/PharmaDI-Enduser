@@ -161,7 +161,7 @@ $cartTotalPrice = $cart->totalPrice();
                                     <span style="font-weight: 500; font-size: 12px;"><?= $prod['prodUnit'] ?></span>
                                 </div>
                             </div>
-                            <form action="/action-plus.php?prodId=<?=$prod['SKU']?>" method="GET" style="grid-column: span 3; display: flex; align-items: center; margin: 0" id="plus-number" onclick="document.getElementById('plus-number').submit()">
+                            <form  method="GET" style="grid-column: span 3; display: flex; align-items: center; margin: 0" id="plus-number" onclick="document.getElementById('plus-number').submit()">
                                 <div class="plus-number">
                                     <button type="button" onclick="decrease('quantity-cart-<?= $prod['SKU']?>')"  style="font-size: 13px; text-align: center; display: flex; justify-content: center; align-items: center">
                                         <svg width="11" height="2.5" viewBox="0 0 11 3" fill="none"
@@ -204,7 +204,7 @@ $cartTotalPrice = $cart->totalPrice();
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="cart-transaction">
+        <form class="cart-transaction" action="action-insert-order.php" method="POST">
             <span class="title">THÔNG TIN THANH TOÁN</span>
             <div
                 style="border: 1px solid #D8D8D8; background-color: white; padding: 15px; border-radius: 8px; margin-top: 5px">
@@ -217,11 +217,11 @@ $cartTotalPrice = $cart->totalPrice();
                     <span style="font-size: 16px; color: #0071AF; font-weight: 600"><?= number_format($cartTotalPrice['total'])?> (VND)</span>
                 </div>
             </div>
-            <textarea
-                style="border: 1px solid #D8D8D8; background-color: white; padding: 15px; border-radius: 8px; margin-top: 15px; resize: none; outline:0"
-                name="" id="" cols="30" rows="4" style="height: 20px; max-width: 100%; min-width: 100%"></textarea>
+            <textarea 
+                style="font-size: 13px; border: 1px solid #D8D8D8; background-color: white; padding: 15px; border-radius: 8px; margin-top: 15px; resize: none; outline:0"
+                name="note" id="" cols="30" rows="2" style="height: 20px; max-width: 100%; min-width: 100%"></textarea>
             <button>Xác nhận đặt hàng</button>
-        </div>
+        </form>
     </div>
 </body>
 <!-- FOOTER  -->
