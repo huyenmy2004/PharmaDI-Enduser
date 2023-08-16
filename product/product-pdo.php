@@ -58,6 +58,22 @@ class Product extends Connection
         $select->execute();
         return $select->fetchAll();
     }
+    public function insert($id, $number)
+    {
+        $sqlExists = "SELECT EXISTS(SELECT 1 FROM product_cart WHERE SKU = '$id' AND cartId = 'cart001')";
+        $selectExists = $this->prepareSQL($sqlExists);
+        $selectExists->execute();
+        if($selectExists->fetchAll()[0]["EXISTS(SELECT 1 FROM product_cart WHERE SKU = '$id' AND cartId = 'cart001')"] == 1)
+        {
+            $sql = "UPDATE `product_cart` SET prodCartNum = product_cart.prodCartNum + $number WHERE SKU = $id AND cartId = 'cart001'";
+        }
+        else {
+            $sql = "INSERT INTO `product_cart`(`SKU`, `cartId`, `prodCartNum`) VALUES ('$id', 'cart001', $number)";
+        }
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
 }
 class Brand extends Connection
 {

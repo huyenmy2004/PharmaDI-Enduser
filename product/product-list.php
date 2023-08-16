@@ -265,7 +265,7 @@ $tags = $tag->getData();
                                 </span>
                             </div>
                         </div>
-                        <form action="">
+                        <form action="action-insert-cart.php" method="GET">
                             <div class="plus-number">
                                 <button type='button' onclick="decrease('quantity-cart-<?= $product['SKU']?>')">
                                     <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
@@ -275,7 +275,8 @@ $tags = $tag->getData();
                                             fill="#505050" />
                                     </svg>
                                 </button>
-                                <input type="number" value=0 id="quantity-cart-<?= $product['SKU']?>" style="font-size: 13px; text-align: center">
+                                <input type="hidden" name="prodId" value="<?= $product['SKU']?>">
+                                <input type="number" name="prodCartNum" value=0 id="quantity-cart-<?= $product['SKU']?>" style="font-size: 13px; text-align: center">
                                 <button type='button' onclick="increase('quantity-cart-<?= $product['SKU']?>')">
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
