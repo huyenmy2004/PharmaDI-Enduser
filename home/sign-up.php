@@ -15,16 +15,16 @@
 </style>
 <body>
     <div class="sign-up-bgr hide">
-        <div action="" class="sign-in">
+        <form action="action-sign-up.php" class="sign-in" id="signUpForm" method="POST">
             <span style="font-size:28px; color: #0071AF; font-weight: 600; width: max-content; margin:20px 0 20px 0;">ĐĂNG KÝ TÀI KHOẢN</span>
             <div class="sign-in-input">
                 <span>Tên nhà thuốc</span>
-                <input type="text" name="merchant" id="merchant" placeholder="Nhập tên nhà thuốc...">
+                <input type="text" name="cusName" id="merchant" placeholder="Nhập tên nhà thuốc...">
             </div>
             <span style="font-size: 12px; color: red; width: 100%; padding-left: 120px; padding-bottom: 5px" id="merchantNoti"></span>
             <div class="sign-in-input">
-                <span>Số điện thoại</span>
-                <input type="text" name="phone" id="phone" placeholder="Nhập số điện thoại...">
+                <span>Username</span>
+                <input type="text" name="username" id="username" placeholder="Nhập số điện thoại...">
             </div>
             <span style="font-size: 12px; color: red; width: 100%; padding-left: 120px; padding-bottom: 5px" id="phoneNoti"></span>
             <div class="sign-in-input">
@@ -45,7 +45,7 @@
             <span style="font-size: 12px; color: red; width: 100%; padding-left: 120px; padding-bottom: 5px" id="repeatPassNoti"></span>
             <div class="sign-in-input">
                 <span>Số GPP</span>
-                <input type="text" id="GPP" name="GPP" placeholder="Nhập số GPP...">
+                <input type="text" id="GPP" name="cusGPP" placeholder="Nhập số GPP...">
             </div>
             <span style="font-size: 12px; color: red; width: 100%; padding-left: 120px; padding-bottom: 5px" id="gppNoti"></span>
             <button type="button" onclick="validateSignUp()">Đăng ký</button>
@@ -53,7 +53,7 @@
                 <span>Bạn chưa có tài khoản?</span>
                 <span style="padding-left: 5px; color: #0071AF; font-weight: 600; cursor: pointer" onclick="signInNow()">Đăng nhập ngay</span>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 <script>
@@ -76,24 +76,23 @@
         // if(document.getElementById('passSignUp').value == ''){
         //     document.getElementById('passSignUpNoti').textContent = 'Vui lòng nhập mật khẩu'
         // }
-        if(document.getElementById('repeatPass').value == ''){
-            document.getElementById('repeatPassNoti').textContent = 'Mật khẩu nhập lại không đúng'
-        }
         if(!/^[A-Za-z0-9][^'!@#$%^&*()]{6,}$/.test(document.getElementById('merchant').value)){
             document.getElementById('merchantNoti').innerHTML = 'Tên nhà thuốc không hợp lệ'
+            return false
         }
-        if(!/^[0-9][^'!@#$%^&*()A-Za-z]{9,20}$/.test(document.getElementById('phone').value)){
-            document.getElementById('phoneNoti').innerHTML = 'Số điện thoại không hợp lệ'
+        if(document.getElementById('repeatPass').value == ''){
+            document.getElementById('repeatPassNoti').textContent = 'Mật khẩu nhập lại không đúng' 
+            return false
         }
         if(!/^(?=.*[A-Z])(?=.*[a-z])(?=.*['!@#$%^&*()]).{6,20}$/.test(document.getElementById('passSignUp').value)){
-            document.getElementById('passSignUpNoti').innerHTML = 'Mật khẩu không hợp lệ'
+            document.getElementById('passSignUpNoti').innerHTML = 'Mật khẩu không hợp lệ' 
+            return false
         }
         if(document.getElementById('passSignUp').value != document.getElementById('repeatPass').value){
-            document.getElementById('repeatPassNoti').innerHTML = 'Mật khẩu nhập lại không đúng'
+            document.getElementById('repeatPassNoti').innerHTML = 'Mật khẩu nhập lại không đúng' 
+            return false
         }
-        if(!/^[0-9][^'!@#$%^&*()A-Za-z]{9,20}$/.test(document.getElementById('GPP').value)){
-            document.getElementById('gppNoti').innerHTML = 'Số GPP không hợp lệ'
-        }
+        document.getElementById('signUpForm').submit();
     }
     function showPass(id, eyeId){
         var pass = document.getElementById(id);

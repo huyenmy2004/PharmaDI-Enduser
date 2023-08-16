@@ -57,6 +57,18 @@ class Login extends Connection {
         $select->execute();
         return $select->fetchAll();
     }
+    public function signUp($data){
+        $sql = "INSERT INTO account VALUE (:username, :pass, 0, 0);";
+        $sql = $sql."INSERT INTO customer(cusName, cusGPP) VALUE (:cusName, :cusGPP);";
+        $insert = $this->prepareSQL($sql);
+        $insert->execute($data);
+    }
+    public function insertCart($data){
+        $sql = "INSERT INTO account VALUE (:username, :pass, 0, 0);";
+        $sql = $sql."INSERT INTO customer(cusName, cusGPP) VALUE (:cusName, :cusGPP);";
+        $insert = $this->prepareSQL($sql);
+        $insert->execute($data);
+    }
 }
 class News extends Connection{
     public function getData(){
