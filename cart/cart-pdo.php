@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../connect-db.php";
 class Cart extends Connection
 {
@@ -9,7 +10,7 @@ class Cart extends Connection
         JOIN product ON product_cart.SKU = product.SKU
         JOIN product_img ON product_img.SKU = product.SKU
         JOIN brand ON product.brandId = brand.brandId
-        WHERE (prodStatus = 1) 
+        WHERE (prodStatus = 1) AND (product_cart.cartId = '$_SESSION[cartId]')
         GROUP BY product.SKU;";
         $select = $this->prepareSQL($sql);
         $select->execute();

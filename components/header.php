@@ -180,7 +180,7 @@ $cartTotalNum = $cart->totalNum();
                 font-size: 10px;
                 color: #FFFFFF;"><?= $cartTotalNum['total'] ?></span>
                 <span style="font-size: 13px; padding-left: 12px;"
-                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/cart/cart.php'">Giỏ hàng</span>
+                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/cart/cart-list.php'">Giỏ hàng</span>
             </div>
             <div class="menu-right-account"  onclick="showDroplist('profile')">
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

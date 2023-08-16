@@ -74,7 +74,7 @@
 </style>
 <body>
     <div class="sign-in-bgr hide">
-        <div action="" class="sign-in">
+        <form action="http://localhost/PharmaDI-Enduser/home/action-login.php?" class="sign-in" method="POST">
             <span style="font-size:28px; color: #0071AF; font-weight: 600; width: max-content; margin:20px 0 20px 0;">ĐĂNG NHẬP</span>
             <div class="sign-in-input">
                 <span>Tên đăng nhập</span>
@@ -89,12 +89,12 @@
                 </svg>
             </div>
             <span style="font-size: 12px; color: red; width: 100%; padding-left: 120px; padding-bottom: 5px" id="passNoti"></span>
-            <button type="button" onclick="validateSignIn()">Đăng nhập</button>
+            <button type="submit" onclick="validateSignIn()">Đăng nhập</button>
             <div style="display: flex; font-size:14px; padding: 20px">
                 <span>Bạn chưa có tài khoản?</span>
                 <span style="padding-left: 5px; color: #0071AF; font-weight: 600; cursor: pointer" onclick="signUpNow()">Đăng ký ngay</span>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 
@@ -109,10 +109,10 @@
         if(document.getElementById('pass').value == ''){
             document.getElementById('passNoti').textContent = 'Vui lòng nhập mật khẩu'
         }
-        var re = /^[0-9][^'!@#$%^&*()A-Za-z]{9,20}$/
-        if(!re.test(document.getElementById('username').value)){
-            document.getElementById('usernameNoti').innerHTML = 'Tên tài khoản không hợp lệ'
-        }
+        // var re = /^[0-9][^'!@#$%^&*()A-Za-z]{9,20}$/
+        // if(!re.test(document.getElementById('username').value)){
+        //     document.getElementById('usernameNoti').innerHTML = 'Tên tài khoản không hợp lệ'
+        // }
     }
     
     function showPass(id){
