@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="order.css">
-    <title>Order</title>
+    <title>Đơn Hàng</title>
 </head>
 <body>
 
@@ -73,12 +73,12 @@
                                                 else if($product['orderStatus'] == 5) echo "Huỷ đơn hàng";
                                             ?></button></li>
                                         <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                        <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                        <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?> (VND)</p></li>
                                     </ul>
                                 </div>
                                 <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                                 <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                                <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                                <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?> (VND)</p>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -97,12 +97,12 @@
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Chờ xác nhận" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                    <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                    <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?> (VND)</p></li>
                                 </ul>
                             </div>
                             <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                             <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                            <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                            <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?> (VND)</p>
                         </div>
                     </div>
                 <?php } endforeach; ?>
@@ -121,12 +121,12 @@
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Đã xác nhận" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                    <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                    <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?> (VND)</p></li>
                                 </ul>
                             </div>
                             <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                             <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                            <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                            <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?> (VND)</p>
                         </div>
                     </div>
                 <?php } endforeach; ?>
@@ -145,12 +145,12 @@
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Đang giao hàng" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                    <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                    <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?> (VND)</p></li>
                                 </ul>
                             </div>
                             <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                             <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                            <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                            <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?> (VND)</p>
                         </div>
                     </div>
                 <?php } endforeach; ?>
@@ -169,12 +169,12 @@
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Đã giao hàng" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                    <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                    <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?> (VND)</p></li>
                                 </ul>
                             </div>
                             <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                             <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                            <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                            <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?> (VND)</p>
                         </div>
                     </div>
                 <?php } endforeach; ?>
@@ -193,12 +193,12 @@
                                 <ul class="order-list-item-inf">
                                     <li><button class="order-list-item-status"><?= "Huỷ đơn hàng" ?></button></li>
                                     <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                    <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                    <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?> (VND)</p></li>
                                 </ul>
                             </div>
                             <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                             <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                            <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                            <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?> (VND)</p>
                         </div>
                     </div>
                 <?php } endforeach; ?>
