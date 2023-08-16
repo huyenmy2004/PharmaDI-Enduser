@@ -27,16 +27,6 @@ class Cart extends Connection
         $select->execute();
         return $select->fetchAll();
     }
-    public function insert($data)
-    {
-        $sql = "SELECT brand.* FROM product_cart
-        JOIN product ON product_cart.SKU = product.SKU
-        JOIN brand ON product.brandId = brand.brandId
-        WHERE (prodStatus = 1);";
-        $select = $this->prepareSQL($sql);
-        $select->execute();
-        return $select->fetchAll();
-    }
     public function deleteProduct($id){
         $sql = "DELETE FROM product_cart WHERE SKU = $id";
         $delete = $this->prepareSQL($sql);
