@@ -1,6 +1,9 @@
 <?php
 require_once "Brand_classes.php"; // Include the class file
-require_once "./connect-db.php"; // Include the DB connection file
+require_once "connect1-db.php"; // Include the DB connection file
+
+// Include the header
+require_once "../components/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +19,7 @@ require_once "./connect-db.php"; // Include the DB connection file
     <link rel="stylesheet" href="./Brand.css">
 </head>
 <body>
-    <?php require_once "../components/header.php"; ?>
+    
     
     <div class="breadcrumb0">
         <ul class="breadcrumb">

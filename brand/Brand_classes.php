@@ -4,10 +4,12 @@ class Brand {
     public $brandLogo;
     public $brandDescription;
     public $productCount;
+    public $brandName;
 
-    function __construct($brandId, $brandLogo, $brandDescription, $productCount) {
+    function __construct($brandId, $brandLogo, $brandName, $brandDescription, $productCount) {
         $this->brandId = $brandId;
         $this->brandLogo = $brandLogo;
+        $this -> brandName = $brandName;
         $this->brandDescription = $brandDescription;
         $this->productCount = $productCount;
     }
@@ -15,9 +17,10 @@ class Brand {
     public function displayBrand() {
         echo '<div class="brand">';
         echo '<img class="input" src="' . $this->brandLogo . '" alt="Logo">';
+        echo '<p class="input" id="name">' . $this->brandName . '</p>';
         echo '<p class="input">' . $this->brandDescription . '</p>';
         echo '<p class="input" id="count">' . $this->productCount . ' sản phẩm</p>';
-        echo '<a class="input" href = ""> Xem sản phẩm >>> </a>';
+        echo '<a class="input" href="san-pham-theo-hang.php?brandId=' . $this->brandId . '"> Xem sản phẩm >>> </a>';
         echo '</div>';
     }
 }
@@ -34,7 +37,6 @@ class BrandList {
             $brand->displayBrand();
         }
     }
-
     public function loadBrandsFromDB() {
         $conn = connectDB();
 
@@ -48,8 +50,10 @@ class BrandList {
                 $brand = new Brand(
                     $row['brandId'],
                     $row['brandLogo'],
+                    $row['brandName'],
                     $row['brandDescription'],
                     $row['product_count']
+                    
                 );
 
                 $this->addBrand($brand);
