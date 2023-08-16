@@ -1,6 +1,6 @@
 <?php
 require_once "Brand_classes.php"; // Include the class file
-require_once "../connect-db.php"; // Include the DB connection file
+require_once "./connect-db.php"; // Include the DB connection file
 ?>
 
 <!DOCTYPE html>
