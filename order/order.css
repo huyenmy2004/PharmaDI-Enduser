@@ -2,11 +2,9 @@
     margin: 0;
   }
   
-  /* body {
-    font-family: "Roboto", sans-serif;
-    background-color: whitesmoke;
-    #F4F7FC
-  } */
+  .content {
+    background-color: #F4F7FC;
+  }
 
   .order-list {
     margin-left: 200px;
