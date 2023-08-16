@@ -202,7 +202,7 @@ $cartTotalNum = $cart->totalNum();
                         <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050]" onclick="window.location.href='http://localhost/PharmaDI-Enduser/profile/profile.php'">
                             Cá nhân
                         </span>
-                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050]">
+                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050]" onclick="window.location.href='../log-out.php'">
                             Đăng xuất
                         </span>
                 </div>
