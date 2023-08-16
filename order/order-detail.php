@@ -1,5 +1,5 @@
 <?php
-    require_once '../connection/pdo.php';
+    require_once 'pdo.php';
     require_once '../components/header.php';
     $id = $_GET['id'];
     $getinf = new Query();

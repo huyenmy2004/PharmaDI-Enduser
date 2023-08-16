@@ -1,6 +1,6 @@
 <?php
 
-require_once '../connection/pdo.php';
+require_once 'pdo.php';
 require_once 'helper.php';
 
 $request = $_POST;

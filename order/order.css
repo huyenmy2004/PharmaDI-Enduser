@@ -12,6 +12,8 @@
     background-color: white;
     margin-right: 200px;
     padding: 50px;
+    border-radius: 10px;
+
   }
 
   .order-list-title {
@@ -19,7 +21,7 @@
     font-family: Roboto;
     font-size: 20px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 30px; /* 150% */
   }
 
