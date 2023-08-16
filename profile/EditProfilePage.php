@@ -1,7 +1,7 @@
 <?php
 class EditProfilePage {
     public function displayEditForm() {
-        require_once "../connect-db.php";
+        require_once "./connect-db.php";
 
         if (isset($_GET['cusId'])) {
             $id_khach_hang = $_GET['cusId'];

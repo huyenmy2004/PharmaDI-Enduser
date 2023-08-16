@@ -1,5 +1,5 @@
 <?php
-require_once "../connect-db.php";
+require_once "./connect-db.php";
 require_once "UpdateProfilePage.php";
 
 if (isset($_GET['cusId'])) {
