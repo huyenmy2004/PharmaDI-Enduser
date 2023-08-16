@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="./profile.css">
 </head>
 <body>
-    <?php require "../header.php"; ?>
+    <?php require "../components/header.php"; ?>
     <!-- CONTENT  -->
     <div class="wrapper">
-        <div class="container">
+        <div class="container1">
             <div class="header">
                 <h4>THÔNG TIN TÀI KHOẢN</h4>
             </div>
@@ -29,7 +29,7 @@
     </div>
 
     <!-- FOOTER  -->
-    <?php require "../footer.php"; ?>
+    <?php require "../components/footer.php"; ?>
 
 </body>
 </html>

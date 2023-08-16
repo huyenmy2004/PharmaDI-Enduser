@@ -40,10 +40,12 @@ class EditProfilePage {
             echo '<label for="noi_cap"><strong class="label">Nơi cấp</strong></label>';
             echo '<input type="text" class="input" id="noi_cap" name="noi_cap" value="' . $row["cusGPPAddr"] . '"><br>';
 
-            echo '<div class="button-container">';
-            echo '<input type="submit" class="btn_cancel" value="Hủy bỏ" formaction="profile.php">';
-            echo '<input type="submit" class="btn_update" value="Chỉnh sửa">';
+            echo '<div class="container2">';
+            echo '<button type="submit" class="cancel1" formaction="profile.php">Hủy bỏ</button>';
+            echo '<button type="submit" class="update1" style="background-color: rgb(3, 109, 166);
+            color: #ffffff;">Chỉnh sửa</button>';
             echo '</div>';
+
             echo '</form>';
         } else {
             echo "Không tìm thấy thông tin khách hàng.";

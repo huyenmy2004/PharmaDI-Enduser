@@ -1,28 +1,17 @@
 <?php
-class Connection{
-    protected $connection,
-    $host,
-    $dbname,
-    $username,
-    $password;
-    public function __construct(){
-        $this->host = 'localhost';
-        $this->dbname = 'pharmadi';
-        $this->username = 'root';
-        $this->password = '';
-        $this->connection = $this->connect();
+function connectDB() {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "pharmadi";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Kiểm tra kết nối
+    if ($conn->connect_error) {
+        die("Kết nối thất bại: " . $conn->connect_error);
     }
-    public function connect(){
-        try{
-            $connection = new PDO("mysql:host=$this->host;dbname=$this->dbname",$this->username, $this->password);
-            $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            return $connection;
-        }
-        catch (Exception $e) {
-            die($e->getMessage());     
-        }
-    }
-    public function prepareSQL($sql){
-        return $this->connection->prepare($sql);
-    }
+
+    return $conn;
 }
+?>
