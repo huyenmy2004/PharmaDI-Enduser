@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../check-login.php";
 require_once "../connect-db.php";
 class Cart extends Connection
 {

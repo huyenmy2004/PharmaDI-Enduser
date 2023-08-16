@@ -1,5 +1,6 @@
 <!-- MENU  -->
 <?php
+require_once "../check-login.php";
 require "../components/header.php";
 require_once "product-pdo.php";
 $product = new Product();

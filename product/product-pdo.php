@@ -1,4 +1,5 @@
 <?php
+require_once "../check-login.php";
 require_once "../connect-db.php";
 class Product extends Connection
 {
@@ -60,15 +61,15 @@ class Product extends Connection
     }
     public function insert($id, $number)
     {
-        $sqlExists = "SELECT EXISTS(SELECT 1 FROM product_cart WHERE SKU = '$id' AND cartId = 'cart001')";
+        $sqlExists = "SELECT EXISTS(SELECT 1 FROM product_cart WHERE SKU = '$id' AND cartId = '$_SESSION[cartId]')";
         $selectExists = $this->prepareSQL($sqlExists);
         $selectExists->execute();
-        if($selectExists->fetchAll()[0]["EXISTS(SELECT 1 FROM product_cart WHERE SKU = '$id' AND cartId = 'cart001')"] == 1)
+        if($selectExists->fetchAll()[0]["EXISTS(SELECT 1 FROM product_cart WHERE SKU = '$id' AND cartId = '$_SESSION[cartId]')"] == 1)
         {
-            $sql = "UPDATE `product_cart` SET prodCartNum = product_cart.prodCartNum + $number WHERE SKU = $id AND cartId = 'cart001'";
+            $sql = "UPDATE `product_cart` SET prodCartNum = product_cart.prodCartNum + $number WHERE SKU = $id AND cartId = '$_SESSION[cartId]'";
         }
         else {
-            $sql = "INSERT INTO `product_cart`(`SKU`, `cartId`, `prodCartNum`) VALUES ('$id', 'cart001', $number)";
+            $sql = "INSERT INTO `product_cart`(`SKU`, `cartId`, `prodCartNum`) VALUES ('$id', '$_SESSION[cartId]', $number)";
         }
         $select = $this->prepareSQL($sql);
         $select->execute();

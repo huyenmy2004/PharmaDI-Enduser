@@ -57,14 +57,6 @@ class Login extends Connection {
         $select->execute();
         return $select->fetchAll();
     }
-    public function checkLogin() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        // if (!isset($_SESSION['user_role'])) {
-        //     header('location:../home.php');
-        // }
-    }
 }
 class News extends Connection{
     public function getData(){
