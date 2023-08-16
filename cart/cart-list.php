@@ -53,15 +53,7 @@ $cartTotalPrice = $cart->totalPrice();
             color: #505050;
             height: 25px;
         }
-        .select-all {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            >span {
-                padding: 0 10px 0 15px;
-                font-size: 13px;
-            }
-        }
+
         .check input:checked ~ .checkmark {
             background-color: red;
         }
@@ -152,10 +144,6 @@ $cartTotalPrice = $cart->totalPrice();
                         <!-- <img src="<$brand['brandLogo'] ?>" alt="brand"> -->
                         <div style="display: flex; align-items: center">
                             <button class="delete-all">Xoá tất cả</button>
-                            <div class="select-all">
-                                <span>Chọn tất cả</span>
-                                <input type="checkbox">
-                            </div>
                         </div>
                     </div>
                     <?php foreach ($cartProducts as $prod): 
