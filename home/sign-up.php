@@ -10,7 +10,7 @@
         z-index: 2;
     }
     .hide{
-        display: none;
+        display: none; 
     }
 </style>
 <body>
