@@ -1,9 +1,6 @@
 <?php
 require_once "Brand_classes.php"; // Include the class file
 require_once "../connect-db.php"; // Include the DB connection file
-
-// Include the header
-require_once "../header.php";
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +16,7 @@ require_once "../header.php";
     <link rel="stylesheet" href="./Brand.css">
 </head>
 <body>
-    <?php require_once "../header.php"; ?>
+    <?php require_once "../components/header.php"; ?>
     
     <div class="breadcrumb0">
         <ul class="breadcrumb">
@@ -65,7 +62,7 @@ require_once "../header.php";
         ?>
     </div>
     
-    <?php require_once "../footer.php"; ?>
+    <?php require_once "../components/footer.php"; ?>
     
     <!-- Các thẻ script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
