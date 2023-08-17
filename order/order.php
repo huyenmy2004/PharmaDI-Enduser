@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.0">
     <link rel="stylesheet" href="order.css">
     <title>Order</title>
 </head>
@@ -18,7 +18,7 @@
 
 <div class="content">
     <div class="order-list">
-        <h1 class="order-list-title">Danh sách đơn hàng</h1>
+        <h0 class="order-list-title">Danh sách đơn hàng</h0>
         <?php 
             $all = count($products);
             $wait = 0;
@@ -26,11 +26,11 @@
             $on_way = 0;
             $receive = 0;
             $cancel = 0;
-            $i = 1;
+            $i = 0;
             $max = count($products);
             foreach ($products as $product) :
                 if($i == $max) {
-                    if($product['orderStatus'] == 1) $wait++;
+                    if($product['orderStatus'] == 0) $wait++;
                         else if($product['orderStatus'] == 2) $confirm++;
                         else if($product['orderStatus'] == 3) $on_way++;
                         else if($product['orderStatus'] == 4) $receive++;
@@ -45,7 +45,7 @@
             <button class="order-list-button" name="cancel">Huỷ đơn hàng (<?= $cancel?>)</button>
         </div>
         <?php } else $i++; 
-                if($product['orderStatus'] == 1) $wait++;
+                if($product['orderStatus'] == 0) $wait++;
                 else if($product['orderStatus'] == 2) $confirm++;
                 else if($product['orderStatus'] == 3) $on_way++;
                 else if($product['orderStatus'] == 4) $receive++;
@@ -66,19 +66,19 @@
                                     <img class="order-list-item-img" src="<?= $product['imgPath']?>" alt="">
                                     <ul class="order-list-item-inf">
                                         <li><button class="order-list-item-status">
-                                            <?php if($product['orderStatus'] == 1) echo "Chờ xác nhận";
+                                            <?php if($product['orderStatus'] == 0) echo "Chờ xác nhận";
                                                 else if($product['orderStatus'] == 2) echo "Đã xác nhận";
                                                 else if($product['orderStatus'] == 3) echo "Đang giao hàng";
                                                 else if($product['orderStatus'] == 4) echo "Đã giao hàng";
                                                 else if($product['orderStatus'] == 5) echo "Huỷ đơn hàng";
                                             ?></button></li>
                                         <li><span class="order-list-item-title"><?= $product['prodName']?></span></li>
-                                        <li><p class="order-list-item-price"><?= $product['prodPrice'] ?></p></li>
+                                        <li><p class="order-list-item-price"><?= number_format($product['prodPrice']) ?></p></li>
                                     </ul>
                                 </div>
                                 <p class="order-list-item-detal"><a href="order-detail.php?id=<?php echo $product["orderId"] ?>">Xem thêm ></a></p>
                                 <p class="order-list-item-num"><?= $product['prodNumber'] ?> sản phẩm</p>
-                                <p class="order-list-item-total">Thành tiền: <?= $product['prodPrice'] * $product['prodNumber']?></p>
+                                <p class="order-list-item-total">Thành tiền: <?= number_format($product['prodPrice'] * $product['prodNumber'])?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -89,7 +89,7 @@
 
         <div class="order-lists">
             <div class="order-list-box">
-                <?php foreach ($products as $product) : if($product['orderStatus'] == 1) {?>
+                <?php foreach ($products as $product) : if($product['orderStatus'] == 0) {?>
                     <div class="order-list-detail">
                         <div class="order-list-item">
                             <div class="order-list-item-des">
