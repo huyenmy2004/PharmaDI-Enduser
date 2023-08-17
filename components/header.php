@@ -173,12 +173,17 @@ $cartTotalNum = $cart->totalNum();
                 <span style="
                 background-color: #D30000;
                 border-radius: 50px;
-                padding: 3px 4px;
+                padding: 4px 4px;
+                width: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 20px;
                 position: absolute;
                 left: 22px;
-                top: 1px;
+                top: 0px;
                 font-size: 10px;
-                color: #FFFFFF;"><?= $cartTotalNum['total'] ?></span>
+                color: #FFFFFF;"><?= $cartTotalNum['total'] > 0 ? $cartTotalNum['total'] : 0 ?></span>
                 <span style="font-size: 13px; padding-left: 12px;"
                     onclick="window.location.href='http://localhost/PharmaDI-Enduser/cart/cart-list.php'">Giỏ hàng</span>
             </div>
@@ -191,18 +196,21 @@ $cartTotalNum = $cart->totalNum();
                         d="M1.35449 13C1.35449 6.56814 6.56851 1.35413 13.0003 1.35413C19.4321 1.35413 24.6462 6.56814 24.6462 13C24.6462 19.4318 19.4321 24.6458 13.0003 24.6458C6.56851 24.6458 1.35449 19.4318 1.35449 13ZM13.0003 2.97913C7.46597 2.97913 2.97949 7.46561 2.97949 13C2.97949 15.7577 4.09345 18.2552 5.89594 20.0671C6.09137 19.0129 6.47534 18.0189 7.24606 17.2196C8.39889 16.0241 10.2423 15.4375 13.0003 15.4375C15.7582 15.4375 17.6017 16.0241 18.7545 17.2196C19.5252 18.0189 19.9092 19.0129 20.1046 20.0672C21.9072 18.2553 23.0212 15.7577 23.0212 13C23.0212 7.46561 18.5347 2.97913 13.0003 2.97913ZM18.6268 21.2933C18.5164 19.9804 18.2314 19.0182 17.5847 18.3476C16.8811 17.6179 15.5775 17.0625 13.0003 17.0625C10.4231 17.0625 9.11941 17.6179 8.41582 18.3476C7.7692 19.0182 7.48411 19.9803 7.37374 21.2932C8.97774 22.3836 10.9146 23.0208 13.0003 23.0208C15.086 23.0208 17.0228 22.3836 18.6268 21.2933Z"
                         fill="#505050" />
                 </svg>
-                <span style="font-size: 13px; padding: 0 5px; ">Huyenmy</span>
+                <span style="font-size: 13px; padding: 0 5px; "><?=$_SESSION['username']?></span>
                 <svg width="15" height="15" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M16.3075 7.09327C16.5322 7.35535 16.5018 7.74991 16.2397 7.97455L10.4064 12.9745C10.1724 13.1752 9.82697 13.1752 9.59292 12.9745L3.75959 7.97455C3.49751 7.74991 3.46716 7.35534 3.69179 7.09327C3.91643 6.83119 4.311 6.80084 4.57307 7.02548L9.99966 11.6768L15.4263 7.02548C15.6883 6.80084 16.0829 6.83119 16.3075 7.09327Z"
                         fill="#505050" />
                 </svg>
-                <div class="absolute top-[50px] flex flex-col bg-white z-1 w-[120px] py-1 rounded-[6px] border border-[#d8d8d8] text-[13px] hidden"
+                <div class="absolute top-[60px] right-[10px] w-max flex flex-col bg-white z-1 w-[120px] py-1 rounded-[6px] border border-[#d8d8d8] text-[13px] hidden"
                 id="profile">
-                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050]" onclick="window.location.href='http://localhost/PharmaDI-Enduser/profile/profile.php'">
-                            Cá nhân
+                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='http://localhost/PharmaDI-Enduser/profile/profile.php'">
+                            Trang cá nhân
                         </span>
-                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050]">
+                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='http://localhost/PharmaDI-Enduser/order/order.php'">
+                            Đơn hàng của tôi
+                        </span>
+                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='../log-out.php'">
                             Đăng xuất
                         </span>
                 </div>
@@ -214,7 +222,7 @@ $cartTotalNum = $cart->totalNum();
             onclick="menuActive('home')">TRANG CHỦ</a>
         <a href="http://localhost/PharmaDI-Enduser/product/product-list.php" id="product"
             onclick="menuActive('product')">SẢN PHẨM</a>
-        <a href="http://localhost/PharmaDI-Enduser/brand/brand-list.php" id="brand" onclick="menuActive('brand')">THƯƠNG
+        <a href="http://localhost/PharmaDI-Enduser/brand/brand.php" id="brand" onclick="menuActive('brand')">THƯƠNG
             HIỆU</a>
         <a href="http://localhost/PharmaDI-Enduser/news/news-list.php" id="news" onclick="menuActive('news')">TIN
             TỨC</a>
