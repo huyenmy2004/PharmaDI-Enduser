@@ -18,18 +18,15 @@
 
 <div class="content">
     <div class="order-list">
-        <div>
-
-        
-        <h0 class="order-list-title">Danh sách đơn hàng</h0>
-        <?php 
+    <h0 class="order-list-title">Danh sách đơn hàng</h0>
+    <?php 
             $all = count($products);
             $wait = 0;
             $confirm = 0;
             $on_way = 0;
             $receive = 0;
             $cancel = 0;
-            $i = 0;
+            $i = 1;
             $max = count($products);
             foreach ($products as $product) :
                 if($i == $max) {
@@ -48,14 +45,13 @@
             <button class="order-list-button" name="cancel">Huỷ đơn hàng (<?= $cancel?>)</button>
         </div>
         <?php } else $i++; 
-                if($product['orderStatus'] == 0) $wait++;
+                if($product['orderStatus'] == 1) $wait++;
                 else if($product['orderStatus'] == 2) $confirm++;
                 else if($product['orderStatus'] == 3) $on_way++;
                 else if($product['orderStatus'] == 4) $receive++;
                 else if($product['orderStatus'] == 5) $cancel++;
                 endforeach; 
         ?>
-        </div>
         <!-- search all -->
 
         
