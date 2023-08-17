@@ -17,7 +17,7 @@
     <div class="wrapper">
         <div class="container1">
             <div class="header">
-                <h4>THÔNG TIN TÀI KHOẢN</h4>
+                <h4 style="font-weight: 600">THÔNG TIN TÀI KHOẢN</h4>
             </div>
             <?php
                 require_once "ProfilePage.php";

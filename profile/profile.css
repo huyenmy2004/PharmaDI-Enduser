@@ -10,7 +10,7 @@
     border: 1px solid #ccc;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
-    padding: 20px;
+    padding: 35px;
     max-width: 800px; /* Điều chỉnh giá trị max-width tùy ý */
     text-align: left;
 }
@@ -19,8 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
 }
 
@@ -34,7 +33,7 @@
 
 .label {
     display: inline-block;
-    width: 200px;
+    width: 230px;
     text-align: left;
     margin-right: 20px;
     color: rgba(80, 80, 80, 1);
@@ -43,13 +42,14 @@
 
 .value {
     display: inline-block;
-    width: 160px;
+    width: 200px;
     text-align: left;
     color: rgba(80, 80, 80, 1);
     font-size: 12px;
 }
 
 .editButton {
+    margin-left: 40px;
     padding: 4px 14px;
     color: #000000;
     text-decoration: none;
@@ -58,7 +58,7 @@
     border-radius: 18px;
     font-size: 8px;
     position: relative;
-    top: -45px;
+    top: -55px;
     left: 200px;
 }
 

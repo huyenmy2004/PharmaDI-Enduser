@@ -1,10 +1,11 @@
 <?php
+require_once "../check-login.php";
 class EditProfilePage {
     public function displayEditForm() {
         require_once "./connect-db.php";
 
         if (isset($_GET['cusId'])) {
-            $id_khach_hang = $_GET['cusId'];
+            $id_khach_hang =  $_SESSION['cusId'];
         } else {
             echo "Không có dữ liệu.";
             exit; 

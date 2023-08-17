@@ -1,9 +1,10 @@
 <?php
+require_once "../check-login.php";
 require_once "./connect-db.php";
 require_once "UpdateProfilePage.php";
 
 if (isset($_GET['cusId'])) {
-    $id_khach_hang = $_GET['cusId'];
+    $id_khach_hang = $_SESSION['cusId'];
 } else {
     echo "Không có dữ liệu.";
     exit;
