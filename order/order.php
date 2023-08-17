@@ -18,6 +18,9 @@
 
 <div class="content">
     <div class="order-list">
+        <div>
+
+        
         <h0 class="order-list-title">Danh sách đơn hàng</h0>
         <?php 
             $all = count($products);
@@ -52,6 +55,7 @@
                 else if($product['orderStatus'] == 5) $cancel++;
                 endforeach; 
         ?>
+        </div>
         <!-- search all -->
 
         

@@ -8,5 +8,5 @@
         'note' => $_POST['note']
     ];
     $cart->insertOrder($data, $listProd);
-    header("Location: http://localhost/PharmaDI-Enduser/cart/cart-list.php");
+    header("Location: http://localhost/PharmaDI-Enduser/order/order.php");
 ?>
