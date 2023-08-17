@@ -81,7 +81,13 @@
     padding: 10px 35px;
   }
 
+  .order-list-brand-img span {
+    margin-bottom: 10px;
+  }
+
   .order-list-brand-title {
+    margin-left: 30px;
+    margin-top: 10px;
     display: flex;
     list-style: none;
     align-items: center;

@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Details</title>
+    <title>Chi Tiết Đơn Hàng</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -117,7 +117,7 @@
                             <p class="order-list-brand-item-title"><?= $product['prodUnit'] ?></p>
                         </div>
                         <p class="order-list-brand-item-num"><?= $product['prodNumber'] ?></p>
-                        <div class="order-list-brand-item-price"><?= $product['prodOldPrice'] ?></div>
+                        <div class="order-list-brand-item-price"><?= number_format($product['prodOldPrice']) ?> (VND)</div>
                     </div>
                 </div>
                 <?php }
@@ -139,11 +139,11 @@
         <div class="order-detail-item-total">
             <div class="order-detail-item-total-num">
                 <span class="title-num">Số lượng:</span>
-                <p class="total-num"><?= $num?> sản phẩm</p>
+                <p class="total-num"><?= $num?> (sản phẩm)</p>
             </div>
             <div class="order-detail-item-total-detail">
                 <span class="title-detail">Thành tiền:</span>
-                <p class="total-detail"><?= $total?> (VND)</p>
+                <p class="total-detail"><?= number_format($total)?> (VND)</p>
             </div>
         </div>
         <?php } else $i++; 
