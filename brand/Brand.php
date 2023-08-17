@@ -16,7 +16,7 @@ require_once "connect-db.php"; // Include the DB connection file
     <link rel="stylesheet" href="./Brand.css">
 </head>
 <body>
-    <?php require_once "../components/header.php"; ?>
+<?php require_once "../components/header.php" ?>
     
     <div class="prod-breadcrumb" style="margin: 10px 0; margin-left: 25px" >
             <div class="prod-breadcrumb-black">
