@@ -22,7 +22,7 @@ class Cart extends Connection
         $sql = "SELECT brand.* FROM product_cart
         JOIN product ON product_cart.SKU = product.SKU
         JOIN brand ON product.brandId = brand.brandId
-        WHERE (prodStatus = 1)
+        WHERE (prodStatus = 1) AND (product_cart.cartId = '$_SESSION[cartId]')
         GROUP BY brandId;";
         $select = $this->prepareSQL($sql);
         $select->execute();
@@ -39,7 +39,7 @@ class Cart extends Connection
         $update->execute();
     }
     public function totalNum(){
-        $sql = "SELECT SUM(prodCartNum) AS total FROM product_cart";
+        $sql = "SELECT SUM(prodCartNum) AS total FROM product_cart WHERE (product_cart.cartId = '$_SESSION[cartId]')";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll()[0];
@@ -69,7 +69,7 @@ class Cart extends Connection
         $insert->execute();
     }
     public function totalOrder(){
-        $sql = "SELECT COUNT(orderId)+1 AS total FROM orders";
+        $sql = "SELECT COUNT(orderId)+1 AS total FROM orders WHERE (product_cart.cartId = '$_SESSION[cartId]')";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll()[0];

@@ -8,7 +8,13 @@ if(count($user) > 0 ){
     $_SESSION['username'] = $user[0]['username'];
     $_SESSION['cusId'] = $user[0]['cusId'];
     $_SESSION['cartId'] = $user[0]['cartId'];
-    header("Location: http://localhost/PharmaDI-Enduser/home/home.php");
+    $_SESSION['role'] = $user[0]['role'];
+    if ($_SESSION['role']==0){
+        header("Location: http://localhost/PharmaDI-Enduser/home/home.php");
+    }
+    if ($_SESSION['role']==1){
+        header("Location: http://localhost/PharmaDI-Admin/product/product-list.php");
+    }
 }
 else{
     header("Location: http://localhost/PharmaDI-Enduser/home/home-guest.php");

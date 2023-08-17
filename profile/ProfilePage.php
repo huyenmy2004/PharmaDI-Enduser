@@ -1,5 +1,4 @@
 <?php
-require_once "../check-login.php";
 class ProfilePage {
     public function displayProfile($cusId) {
         require_once "./connect-db.php";
