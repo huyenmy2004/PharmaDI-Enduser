@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="./asset/image/logo-shortcut.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="order.css">
-    <link rel="stylesheet" href="font_backgroud.css">
+    <!-- <link rel="stylesheet" href="font_backgroud.css"> -->
     <link rel="stylesheet" href="order-detail.css">
 </head>
 <body>
