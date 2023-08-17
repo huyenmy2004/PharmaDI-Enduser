@@ -1,5 +1,6 @@
 <?php
-class Brand {
+
+class Brand{
     public $brandId;
     public $brandLogo;
     public $brandDescription;
@@ -17,7 +18,7 @@ class Brand {
         echo '<img class="input" src="' . $this->brandLogo . '" alt="Logo">';
         echo '<p class="input">' . $this->brandDescription . '</p>';
         echo '<p class="input" id="count">' . $this->productCount . ' sản phẩm</p>';
-        echo '<a class="input" href = ""> Xem sản phẩm >>> </a>';
+        echo '<a class="input" href = ""> Xem sản phẩm ></a>';
         echo '</div>';
     }
 }
