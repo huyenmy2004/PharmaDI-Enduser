@@ -1,12 +1,12 @@
 <?php
 require_once "../check-login.php";
 class ProfilePage {
-    public function displayProfile() {
+    public function displayProfile($cusId) {
         require_once "./connect-db.php";
 
         $conn = connectDB();
 
-        $sql = "SELECT * FROM customer LIMIT 1";
+        $sql = "SELECT * FROM customer WHERE cusId = '$cusId'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

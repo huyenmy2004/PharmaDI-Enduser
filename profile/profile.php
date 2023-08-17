@@ -22,7 +22,7 @@
             <?php
                 require_once "ProfilePage.php";
                 $profilePage = new ProfilePage();
-                $profilePage->displayProfile();
+                $profilePage->displayProfile($_SESSION['cusId']);
             ?>
            
         </div>
