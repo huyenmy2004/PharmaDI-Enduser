@@ -16,8 +16,9 @@ class Product extends Connection
     }
     public function getDetailData($id)
     {
-        $sql = "SELECT product.*, tagName, imgPath, cateName
+        $sql = "SELECT product.*, tagName, imgPath, cateName, brand.*
         FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN brand ON product.brandId = brand.brandId
         JOIN product_img ON product_img.SKU = product.SKU
         JOIN category ON product.cateId = category.cateId
         WHERE product.SKU = '$id'";

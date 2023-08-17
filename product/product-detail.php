@@ -291,13 +291,12 @@ span:hover{
             <div style="width: 30%;">
                 <div style="padding-bottom: 20px; background-color: white; border-radius: 10px; padding: 20px">
                     <div style="display: flex; justify-content: space-between; ">
-                        <img src="../assets/images/brand.png" alt="">
+                        <span style="font-weight: 600; color: #0071AF"><?= $prod['brandName']?> </span>
                         <span
                             style="padding: 5px 10px; color: #505050; border: 1px solid #d8d8d8; border-radius: 20px; font-size: 12px;">09
                             sản phẩm</span>
                     </div>
-                    <div style="font-size: 13px; margin-top: 20px">Arkopharma là Thương hiệu Thực phẩm bảo vệ sức khỏe
-                        Số 1 tại Pháp Theo số liệu nghiên cứu thị trường bởi IQVIA 9/2021.</div>
+                    <div style="font-size: 13px; margin-top: 20px"><?= $prod['brandDescription']?> </div>
                 </div>
                 <div class="prod-info-prod">
                     <div class="title-lowercase">Sản phẩm cùng thương hiệu</div>
