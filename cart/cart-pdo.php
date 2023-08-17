@@ -56,4 +56,22 @@ class Cart extends Connection
         $select->execute();
         return $select->fetchAll()[0];
     }
+    public function insertOrder($data, $listProd){
+        $sql = "INSERT INTO orders VALUES ('$data[orderId]', '$_SESSION[cusId]', '', '', '$data[note]');";
+        $sql = $sql."INSERT INTO product_order VALUES ";
+        foreach($listProd as $prod){
+            $sql = $sql."('$prod[SKU]', '$data[orderId]', '$prod[prodCartNum]', '$prod[prodPriceSale]'),";
+        }
+        $sql = rtrim($sql,',').";";
+        $sql = $sql."DELETE FROM product_cart WHERE cartId = '$_SESSION[cartId]';";
+        // echo $sql;
+        $insert = $this->prepareSQL($sql);
+        $insert->execute();
+    }
+    public function totalOrder(){
+        $sql = "SELECT COUNT(orderId)+1 AS total FROM orders";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll()[0];
+    }
 }
