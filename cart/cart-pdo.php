@@ -69,7 +69,7 @@ class Cart extends Connection
         $insert->execute();
     }
     public function totalOrder(){
-        $sql = "SELECT COUNT(orderId)+1 AS total FROM orders WHERE (product_cart.cartId = '$_SESSION[cartId]')";
+        $sql = "SELECT COUNT(orderId)+1 AS total FROM orders";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll()[0];

@@ -19,6 +19,7 @@ $cartTotalNum = $cart->totalNum();
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        background-color: white;
     }
 
     button:hover {
@@ -34,6 +35,8 @@ $cartTotalNum = $cart->totalNum();
         color: #505050;
         padding: 10px 0 8px 0;
         border-bottom: 1px solid #d8d8d8;
+        background-color: white;
+
     }
 
     .logo {
@@ -53,6 +56,7 @@ $cartTotalNum = $cart->totalNum();
         color: #d8d8d8;
         border-radius: 6px;
         font-size: 12px;
+        background-color: white;
 
         >form {
             display: flex;
@@ -127,6 +131,7 @@ $cartTotalNum = $cart->totalNum();
         align-items: center;
         font-size: 14px;
         border-bottom: 1px solid #d8d8d8;
+        background-color: white;
 
         >a {
             text-decoration: none;
@@ -222,7 +227,7 @@ $cartTotalNum = $cart->totalNum();
             onclick="menuActive('home')">TRANG CHỦ</a>
         <a href="http://localhost/PharmaDI-Enduser/product/product-list.php" id="product"
             onclick="menuActive('product')">SẢN PHẨM</a>
-        <a href="http://localhost/PharmaDI-Enduser/brand/brand.php" id="brand" onclick="menuActive('brand')">THƯƠNG
+        <a href="http://localhost/PharmaDI-Enduser/brand/brand-list.php" id="brand" onclick="menuActive('brand')">THƯƠNG
             HIỆU</a>
         <a href="http://localhost/PharmaDI-Enduser/news/news-list.php" id="news" onclick="menuActive('news')">TIN
             TỨC</a>

@@ -399,10 +399,10 @@ $newsList = $news->getData();
                     </span>
                     <div class="prod-price">
                         <span class="price-sale">
-                            <?= number_format($prodLeft['prodPriceSale']) ?>
+                            <?= number_format($prodLeft['prodPriceSale']) ?>đ
                         </span>
                         <span class="price-orgin">
-                            <?= number_format($prodLeft['prodPrice']) ?>
+                            <?= number_format($prodLeft['prodPrice']) ?>đ
                         </span>
                     </div>
                 </div>
@@ -451,7 +451,7 @@ $newsList = $news->getData();
                                 <?= $prod['prodUnit'] ?>
                             </span>
                             <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= number_format($prod['prodPriceSale']) ?>
+                                <?= number_format($prod['prodPriceSale']) ?>đ
                             </span>
                         </div>
                     </div>
@@ -479,7 +479,7 @@ $newsList = $news->getData();
                                 <?= $prod['prodUnit'] ?>
                             </span>
                             <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= number_format($prod['prodPriceSale']) ?>
+                                <?= number_format($prod['prodPriceSale']) ?>đ
                             </span>
                         </div>
                     </div>
@@ -516,7 +516,7 @@ $newsList = $news->getData();
                                 <?= $prod['prodUnit'] ?>
                             </span>
                             <span style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;">
-                                <?= number_format($prod['prodPriceSale']) ?>
+                                <?= number_format($prod['prodPriceSale']) ?>đ
                             </span>
                         </div>
                     </div>

@@ -49,6 +49,18 @@ class Product extends Connection
         $select->execute();
         return $select->fetchAll();
     }
+    public function seeAllProduct($brand)
+    {
+        $sql = "SELECT product.*, tagName, imgPath
+        FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN product_img ON product_img.SKU = product.SKU
+        JOIN brand ON brand.brandId = product.brandId
+        WHERE (prodStatus = 1) " . ($brand != null ? "AND (brand.brandName = '$brand')"  : ' ') .
+        " GROUP BY product.SKU;";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
     public function getDataByBrand($brand)
     {
         $sql = "SELECT product.*, imgPath
@@ -79,9 +91,19 @@ class Product extends Connection
 }
 class Brand extends Connection
 {
-    public function getData()
+    public function getList()
     {
         $sql = "SELECT * FROM brand";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
+    public function countProduct($brandId){
+        $sql = "SELECT COUNT(*) AS num 
+        FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN product_img ON product_img.SKU = product.SKU
+        JOIN brand ON brand.brandId = product.brandId
+        WHERE brand.brandId = '$brandId'";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll();
@@ -96,6 +118,7 @@ class Tag extends Connection
         $select->execute();
         return $select->fetchAll();
     }
+
 }
 class Category extends Connection
 {

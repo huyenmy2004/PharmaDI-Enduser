@@ -185,7 +185,7 @@ $cartTotalPrice = $cart->totalPrice();
                                     </button>
                                 </div>
                             </form>
-                            <span style="display: flex; align-items: center; font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;grid-column: span 2"><?= number_format($prod['prodPriceSale'])?></span>
+                            <span style="display: flex; align-items: center; font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;grid-column: span 2"><?= number_format($prod['prodPriceSale'])?>đ</span>
                             <div style="grid-column: span 4; display: flex; align-items: center; justify-content: end; grid-column: span 2">
                                 <svg style="cursor: pointer" width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="window.location.href='http://localhost/PharmaDI-Enduser/cart/action-delete.php?prodId=<?=$prod['SKU']?>'">
                                     <path

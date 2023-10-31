@@ -6,6 +6,7 @@ require_once "product-pdo.php";
 $product = new Product();
 $prod = $product->getDetailData($_GET['prodId'])[0];
 $prodBrands = $product->getDataByBrand($prod['brandId']);
+$brand = new Brand();
 ?>
 
 <head>
@@ -292,9 +293,8 @@ span:hover{
                 <div style="padding-bottom: 20px; background-color: white; border-radius: 10px; padding: 20px">
                     <div style="display: flex; justify-content: space-between; ">
                         <span style="font-weight: 600; color: #0071AF"><?= $prod['brandName']?> </span>
-                        <span
-                            style="padding: 5px 10px; color: #505050; border: 1px solid #d8d8d8; border-radius: 20px; font-size: 12px;">09
-                            sản phẩm</span>
+                        <span onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?brandName=<?= $prod['brandName'] ?>'"
+                            style="padding: 5px 10px; color: #505050; border: 1px solid #d8d8d8; border-radius: 20px; font-size: 12px;"><?=$brand->countProduct($prod['brandId'])[0]['num'];?> sản phẩm</span>
                     </div>
                     <div style="font-size: 13px; margin-top: 20px"><?= $prod['brandDescription']?> </div>
                 </div>
@@ -302,7 +302,7 @@ span:hover{
                     <div class="title-lowercase">Sản phẩm cùng thương hiệu</div>
                     <div style=" padding: 10px 30px">
                     <?php foreach ($prodBrands as $prodBrand): ?>
-                        <div style="margin-bottom: 10px">
+                        <div style="margin-bottom: 10px" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prodBrand['SKU'] ?>'">
                             <div class="prod">
                                 <div class="prod-img">
                                     <img src="<?= $prodBrand['imgPath'] ?>" alt="product">
@@ -312,7 +312,7 @@ span:hover{
                                         style="font-weight: 600; font-size: 12px; padding: 5px 0; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?= $prodBrand['prodName'] ?></span>
                                     <span style="font-weight: 500; font-size: 12px;"><?= $prodBrand['prodUnit'] ?></span>
                                     <span
-                                        style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;"><?= number_format($prodBrand['prodPriceSale']) ?></span>
+                                        style="font-weight: 600; font-size: 16px; color: #0071AF; padding: 5px 0;"><?= number_format($prodBrand['prodPriceSale']) ?>đ</span>
                                 </div>
                             </div>
                         </div>

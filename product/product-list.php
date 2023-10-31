@@ -7,9 +7,11 @@ $products = $product->getData(null);
 if (isset($_GET['prodName']))
     $products = $product->getData($_GET['prodName']);
 if (isset($_GET['cateId']))
-$products = $product->searchCate($_GET['cateId']);
+    $products = $product->searchCate($_GET['cateId']);
 if (isset($_GET['tagId']))
-$products = $product->searchTag($_GET['tagId']);
+    $products = $product->searchTag($_GET['tagId']);
+if (isset($_GET['brandName']))
+    $products = $product->seeAllProduct($_GET['brandName']);
 $cate = new Category();
 $cates = $cate->getData();
 $tag = new Tag();
@@ -19,7 +21,6 @@ $tags = $tag->getData();
 <head>
     <title>Sản phẩm</title>
     <style>
-        
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -196,17 +197,24 @@ $tags = $tag->getData();
         <div class="prod-cate">
             <span style="color: #0071AF; font-size: 18px; font-weight: 600; padding: 10px 0 5px 20px;">DANH MỤC</span>
             <hr style="border-top: 1px solid #d8d8d8; width: 200px; margin-bottom: 15px; opacity: 60%">
-            <span class="<?= isset($_GET['cateId']) ? 'prod-cate-unselect' : 'prod-cate-select' ?>" id="all" onclick="window.location.href= 'http://localhost/PharmaDI-Enduser/product/product-list.php'">Tất cả sản phẩm</span>
+            <span class="<?= isset($_GET['cateId']) ? 'prod-cate-unselect' : 'prod-cate-select' ?>" id="all"
+                onclick="window.location.href= 'http://localhost/PharmaDI-Enduser/product/product-list.php'">Tất cả sản
+                phẩm</span>
             <?php foreach ($cates as $cate): ?>
-                <span class="<?= isset($_GET['cateId']) ? ($_GET['cateId'] == $cate['cateId'] ? 'prod-cate-select' : 'prod-cate-unselect') : 'prod-cate-unselect' ?>" id="<?= $cate['cateId'] ?>"
-                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?cateId=<?= $cate['cateId'] ?>'"><?= $cate['cateName'] ?></span>
+                <span
+                    class="<?= isset($_GET['cateId']) ? ($_GET['cateId'] == $cate['cateId'] ? 'prod-cate-select' : 'prod-cate-unselect') : 'prod-cate-unselect' ?>"
+                    id="<?= $cate['cateId'] ?>"
+                    onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?cateId=<?= $cate['cateId'] ?>'">
+                    <?= $cate['cateName'] ?>
+                </span>
             <?php endforeach; ?>
         </div>
         <div class="prod-list-right">
             <div class="prod-breadcrumb">
                 <div style="display: flex">
                     <div class="prod-breadcrumb-black">
-                        <span onclick="window.location.href = 'http://localhost/PharmaDI-Enduser/home/home.php'">Trang chủ</span>
+                        <span onclick="window.location.href = 'http://localhost/PharmaDI-Enduser/home/home.php'">Trang
+                            chủ</span>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.09327 3.6921C7.35535 3.46746 7.74991 3.49781 7.97455 3.75989L12.9745 9.59323C13.1752 9.82728 13.1752 10.1727 12.9745 10.4067L7.97455 16.24C7.74991 16.5021 7.35535 16.5325 7.09327 16.3078C6.83119 16.0832 6.80084 15.6886 7.02548 15.4266L11.6768 9.99997L7.02548 4.57338C6.80084 4.3113 6.83119 3.91674 7.09327 3.6921Z"
@@ -219,7 +227,8 @@ $tags = $tag->getData();
                 </div>
                 <div class="menu-mid">
                     <form action="" style="background: white; border-radius: 8px" method="GET">
-                        <input type="text" name="prodName" placeholder="Nhập tên sản phẩm..." class="search text-[#505050]">
+                        <input type="text" name="prodName" placeholder="Nhập tên sản phẩm..."
+                            class="search text-[#505050]">
                         <button>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -233,18 +242,23 @@ $tags = $tag->getData();
             </div>
             <div class="prod-tag ">
                 <?php foreach ($tags as $tag): ?>
-                    <span class="px-[20px] py-[10px] border bodder-solid border-[#0071AF] rounded-tl-[30px] rounded-br-[30px] text-[12px] text-[#0071AF] m-[5px] <?= isset($_GET['tagId']) ? ($_GET['tagId'] == $tag['tagId'] ? 'text-white bg-[#0071AF]' : ' ') : ' ' ?>"
-                        id="<?= $tag['tagId'] ?>" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?tagId=<?= $tag['tagId'] ?>'"> <?= $tag['tagName'] ?>
+                    <span
+                        class="px-[20px] py-[10px] border bodder-solid border-[#0071AF] rounded-tl-[30px] rounded-br-[30px] text-[12px] text-[#0071AF] m-[5px] <?= isset($_GET['tagId']) ? ($_GET['tagId'] == $tag['tagId'] ? 'text-white bg-[#0071AF]' : ' ') : ' ' ?>"
+                        id="<?= $tag['tagId'] ?>"
+                        onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?tagId=<?= $tag['tagId'] ?>'">
+                        <?= $tag['tagName'] ?>
                     </span>
                 <?php endforeach; ?>
             </div>
             <div class="prod-list">
                 <?php foreach ($products as $product): ?>
                     <div class="prod-one-in">
-                        <div class="img" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU'] ?>'">
+                        <div class="img"
+                            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU'] ?>'">
                             <img src="<?= $product['imgPath'] ?>" alt="">
                         </div>
-                        <div style="display: flex; flex-direction: column; color: 505050">
+                        <div style="display: flex; flex-direction: column; color: 505050"
+                            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $product['SKU'] ?>'">
                             <span
                                 style="font-size: 10px; width: max-content; padding: 5px 10px; color: #0071AF; background-color: #EFFAFF; border: 1px solid #0071AF; border-radius: 18px 0; margin-bottom: 8px">
                                 <?= $product['tagName'] ?>
@@ -258,17 +272,17 @@ $tags = $tag->getData();
                             </span>
                             <div style="display: flex; padding-bottom: 10px; align-items: center;">
                                 <span style="font-size: 16px; color: #0071AF; font-weight: 600; padding-right: 10px">
-                                    <?= number_format($product['prodPriceSale']) ?>
+                                    <?= number_format($product['prodPriceSale']) ?>đ
                                 </span>
                                 <span
                                     style="font-size: 12px; font-weight: 600; text-decoration: line-through; font-weight: 500">
-                                    <?= number_format($product['prodPrice']) ?>
+                                    <?= number_format($product['prodPrice']) ?>đ
                                 </span>
                             </div>
                         </div>
                         <form action="action-insert-cart.php" method="GET">
                             <div class="plus-number">
-                                <button type='button' onclick="decrease('quantity-cart-<?= $product['SKU']?>')">
+                                <button type='button' onclick="decrease('quantity-cart-<?= $product['SKU'] ?>')">
                                     <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -276,9 +290,10 @@ $tags = $tag->getData();
                                             fill="#505050" />
                                     </svg>
                                 </button>
-                                <input type="hidden" name="prodId" value="<?= $product['SKU']?>">
-                                <input type="number" name="prodCartNum" value=0 id="quantity-cart-<?= $product['SKU']?>" style="font-size: 13px; text-align: center">
-                                <button type='button' onclick="increase('quantity-cart-<?= $product['SKU']?>')">
+                                <input type="hidden" name="prodId" value="<?= $product['SKU'] ?>">
+                                <input type="number" name="prodCartNum" value=0 id="quantity-cart-<?= $product['SKU'] ?>"
+                                    style="font-size: 13px; text-align: center">
+                                <button type='button' onclick="increase('quantity-cart-<?= $product['SKU'] ?>')">
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -290,7 +305,7 @@ $tags = $tag->getData();
                                     </svg>
                                 </button>
                             </div>
-                            <button type="submit" >Thêm vào giỏ hàng</button>
+                            <button type="submit">Thêm vào giỏ hàng</button>
                         </form>
                     </div>
                 <?php endforeach; ?>
