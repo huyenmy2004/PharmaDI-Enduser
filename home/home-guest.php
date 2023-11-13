@@ -45,7 +45,7 @@ $newsList = $news->getData();
         .product-detail {
             display: flex;
             flex-direction: column;
-            width: 70%;
+            width: 75%;
             padding: 10px;
             color: #505050;
         }
@@ -349,6 +349,7 @@ $newsList = $news->getData();
             padding: 10px 0;
         }
     </style>
+    <script src="cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -357,12 +358,12 @@ $newsList = $news->getData();
         <img src="../assets/images/banner.png" alt="">
     </div>
     <div class="home-sale">
-        <div class="home-sale-left"
+        <div class="home-sale-left flex items-center"
             onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prodLeft['SKU'] ?>'">
-            <span class="z-10"
-                style="background-color: #BA0122; height: 41.8px; width: 110px; position: absolute; top: 24.5px; left: -1px; color: white; padding: 10px; font-size: 17px">BÁN
+            <span class="z-10 relative ml-4"
+                style="border-radius: 2px 30px 2px 30px; background-color: #BA0122; height: 41.8px; width: max-content; position: absolute; top: 24.5px; left: -50px; color: white; padding: 10px 20px; font-size: 17px">SẢN PHẨM BÁN
                 CHẠY</span>
-            <div style="position: absolute; left: -10px" class="z-10">
+            <!-- <div style="position: absolute; left: -10px" class="z-10 relative">
                 <svg width="10" height="62" viewBox="0 0 12 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M0 58.0056C2.54174 60.4649 6.60001 62.3737 11.461 63.3333V44.0115H2.60662C1.61954 44.6275 0.744681 45.3008 0 46.0213V58.0056Z"
@@ -376,9 +377,9 @@ $newsList = $news->getData();
                     style=" position: absolute; top: 1px; left: 118.5px">
                     <path d="M25 26.5L0.25 52.0477L0.250004 0.952251L25 26.5Z" fill="#BA0122" />
                 </svg>
-            </div>
-            <div class="prod-images">
-                <img src="<?= $prodLeft['imgPath'] ?>" alt="">
+            </div> -->
+            <div>
+                <img class="w-full  flex items-center h-[250px] w-[250px] object-cover" src="<?= $prodLeft['imgPath'] ?>" alt="">
             </div>
             <div class="prod-info">
                 <div class="prod-detail">
@@ -397,10 +398,11 @@ $newsList = $news->getData();
                     <span class="prod-cate">
                         <?= $prodLeft['cateName'] ?>
                     </span>
-                    <span style="background-color: #EFFAFF; border: 1px solid #15A5E3; font-size: 13px; color: #15A5E3; padding: 5px 10px;width: max-content; border-radius: 30px; margin: 10px 0 8px 0; display: flex; justify-content: center">Đăng nhập để xem giá</span>
-
+                    <span class="text-[13px] overflow-hidden h-[80px] text-[#505050]"><?=$prodLeft['prodDescrip']?></span>
+                    <span style="background-color: #EFFAFF; border: 1px solid #15A5E3; font-size: 13px; color: #15A5E3; padding: 5px 10px;width: max-content; border-radius: 30px; margin: 15px 0 8px 0; display: flex; justify-content: center">Đăng nhập để xem giá</span>
+                    <!-- <span class="text-[13px] text-[#0071AF] font-[600] pt-1">Xem chi tiết sản phẩm ></span> -->
                 </div>
-                <form action="">
+                <!-- <form action="">
                     <div class="plus-number">
                         <button>
                             <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
@@ -424,7 +426,7 @@ $newsList = $news->getData();
                         </button>
                     </div>
                     <button type="submit">Thêm vào giỏ hàng</button>
-                </form>
+                </form> -->
             </div>
         </div>
         <div class="home-sale-right">

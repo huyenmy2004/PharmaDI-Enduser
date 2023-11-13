@@ -212,7 +212,7 @@ $cartTotalNum = $cart->totalNum();
                         <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='http://localhost/PharmaDI-Enduser/profile/profile.php'">
                             Trang cá nhân
                         </span>
-                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='http://localhost/PharmaDI-Enduser/order/order.php'">
+                        <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='http://localhost/PharmaDI-Enduser/order/order-list.php?status=0'">
                             Đơn hàng của tôi
                         </span>
                         <span class="hover:bg-gray-100 px-[20px] py-[2px] text-[#505050] w-max" onclick="window.location.href='../log-out.php'">

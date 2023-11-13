@@ -82,8 +82,35 @@ class Product extends Connection
             $sql = "UPDATE `product_cart` SET prodCartNum = product_cart.prodCartNum + $number WHERE SKU = $id AND cartId = '$_SESSION[cartId]'";
         }
         else {
+            $number == 0 ? $number = 1 : $number;
             $sql = "INSERT INTO `product_cart`(`SKU`, `cartId`, `prodCartNum`) VALUES ('$id', '$_SESSION[cartId]', $number)";
         }
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
+    public function searchCountry($v)
+    {
+        $sql = "SELECT product.*, tagName, imgPath
+        FROM product JOIN tag ON product.tagId = tag.tagId
+        JOIN product_img ON product_img.SKU = product.SKU
+        WHERE (prodStatus = 1) " . ($v != null ? "AND (product.prodCountry = '$v')"  : ' ') .
+        "GROUP BY product.SKU;";
+        $select = $this->prepareSQL($sql);
+        $select->execute();
+        return $select->fetchAll();
+    }
+    public function searchNew()
+    {
+        $sql = "SELECT product.*, tagName, brandName, cateName, imgPath
+        FROM product 
+        JOIN tag ON product.tagId = tag.tagId
+        JOIN brand ON product.brandId = brand.brandId
+        JOIN category ON product.cateId = category.cateId
+        JOIN product_img ON product_img.SKU = product.SKU
+        WHERE prodStatus = 1
+        GROUP BY SKU
+        ORDER BY prodSellNumber desc";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll();

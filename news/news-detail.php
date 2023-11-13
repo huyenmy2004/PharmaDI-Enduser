@@ -99,6 +99,13 @@ $newsList = $news->getData();
         textarea::-webkit-scrollbar {
   display: none;
 }
+textarea.vertical {
+  resize: vertical;
+  max-height: 1000px;
+  min-height: 550px;
+  height: max-content;
+  resize: none;
+}
     </style>
 </head>
 <body>
@@ -124,7 +131,7 @@ $newsList = $news->getData();
             <div class="news-detail-content">
                 <img src="<?= $news1['newsImage'] ?>" alt="">
                 <span style="font-weight: 600; padding-bottom: 20px; font-size: 18px; "><?= $news1['newsTitle'] ?></span>
-                <textarea style="height: 500px; resize: none">
+                <textarea class="vertical" type="text">
                 <?= $news1['newsContent'] ?></textarea>
             </div>
             <div class="news-detail-more-post">

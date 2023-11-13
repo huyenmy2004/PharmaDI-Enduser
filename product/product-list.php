@@ -12,6 +12,10 @@ if (isset($_GET['tagId']))
     $products = $product->searchTag($_GET['tagId']);
 if (isset($_GET['brandName']))
     $products = $product->seeAllProduct($_GET['brandName']);
+if (isset($_GET['country']))
+    $products = $product->searchCountry($_GET['country']);
+if (isset($_GET['new']))
+    $products = $product->searchNew();
 $cate = new Category();
 $cates = $cate->getData();
 $tag = new Tag();
@@ -221,7 +225,7 @@ $tags = $tag->getData();
                                 fill="#505050" />
                         </svg>
                     </div>
-                    <div class="prod-breadcrumb-blue">
+                    <div class="prod-breadcrumb-blue"  onclick="window.location.href= 'http://localhost/PharmaDI-Enduser/product/product-list.php'">
                         <span>Sản phẩm</span>
                     </div>
                 </div>

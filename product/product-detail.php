@@ -11,6 +11,7 @@ $brand = new Brand();
 
 <head>
     <title>Chi tiết sản phẩm</title>
+    <script src="cdn.tailwindcss.com"></script>
     <style>
         input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -240,9 +241,9 @@ span:hover{
                             </div>
                         </div>
                         <div class="prod-info-top-button">
-                            <form action="">
+                            <form action="action-insert-cart.php" method="GET">
                                 <div class="plus-number">
-                                    <button>
+                                    <button type="button" onclick="decrease('plus-number')">
                                         <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -250,8 +251,9 @@ span:hover{
                                                 fill="#505050" />
                                         </svg>
                                     </button>
-                                    <input type="number">
-                                    <button>
+                                    <input type="hidden" class="text-[13px]" name="prodId" value="<?=$_GET['prodId']?>">
+                                    <input type="number" class="text-[13px] text-center" id="plus-number" name="prodCartNum" value=0>
+                                    <button type="button" onclick="increase('plus-number')">
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -334,6 +336,12 @@ span:hover{
         document.querySelector('.prod-descript-active').classList.toggle('prod-descript-active')
         document.getElementById(id).classList.toggle('prod-descript-active')
         document.getElementById(id).classList.toggle('prod-descript-deactive')
+    }
+        function increase(id) {
+        document.getElementById(id).value = parseInt(document.getElementById(id).value) + 1
+    }
+    function decrease(id) {
+        document.getElementById(id).value = parseInt(document.getElementById(id).value) - 1
     }
     
 </script>

@@ -155,8 +155,8 @@
     </div> -->
 
         <div class="menu-right">
-        <button style="border: 1px solid #0071AF; background-color: #0071AF; color: white; border-radius: 30px; padding: 10px 20px; margin: 10px" id="sign-in">Đăng nhập</button>
-        <button style="border: 1px solid #d8d8d8; border-radius: 30px; padding: 10px 20px; margin: 10px" id="sign-up">Đăng ký</button>
+        <button style="border: 1px solid #0071AF; background-color: #0071AF; color: white; border-radius: 20px; padding: 10px 20px; margin: 10px 0" id="sign-in">Đăng nhập</button>
+        <button style="border: 1px solid #d8d8d8; border-radius: 20px; padding: 10px 20px; margin: 10px" id="sign-up">Đăng ký</button>
 
         </div>
     </div>

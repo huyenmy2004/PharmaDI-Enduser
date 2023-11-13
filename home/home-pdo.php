@@ -26,7 +26,7 @@ class Home extends Connection{
         WHERE prodStatus = 1
         GROUP BY SKU
         ORDER BY prodSellNumber desc
-        LIMIT 8";
+        LIMIT 12";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll();
@@ -41,7 +41,7 @@ class Home extends Connection{
         WHERE prodStatus = 1 AND prodCountry = 'Vietnam'
         GROUP BY SKU
         ORDER BY prodSellNumber desc
-        LIMIT 8";
+        LIMIT 12";
         $select = $this->prepareSQL($sql);
         $select->execute();
         return $select->fetchAll();

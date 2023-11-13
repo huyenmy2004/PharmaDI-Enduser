@@ -7,6 +7,6 @@
         'orderId' => 'order'.$cart->totalOrder()['total'],
         'note' => $_POST['note']
     ];
-    $cart->insertOrder($data, $listProd);
-    header("Location: http://localhost/PharmaDI-Enduser/order/order.php");
+    $cart->insertOrder($data, $listProd);   
+    header("Location: http://localhost/PharmaDI-Enduser/order/order-list.php?status=0");
 ?>

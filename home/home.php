@@ -107,8 +107,6 @@ $newsList = $news->getData();
             max-width: 40%;
             height: max-content;
 
-            z-index: 0;
-
             >img {
                 width: 400px;
                 height: auto;
@@ -357,28 +355,13 @@ $newsList = $news->getData();
         <img src="../assets/images/banner.png" alt="">
     </div>
     <div class="home-sale">
-        <div class="home-sale-left"
+        <div class="home-sale-left flex items-center"
             onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-detail.php?prodId=<?= $prodLeft['SKU'] ?>'">
-            <span class="z-10"
-                style="background-color: #BA0122; height: 41.8px; width: 110px; position: absolute; top: 24.5px; left: -1px; color: white; padding: 10px; font-size: 17px">BÁN
+            <span class="z-10 relative ml-4"
+                style="border-radius: 2px 30px 2px 30px; background-color: #BA0122; height: 41.8px; width: max-content; position: absolute; top: 24.5px; left: -50px; color: white; padding: 10px 20px; font-size: 17px">SẢN PHẨM BÁN
                 CHẠY</span>
-            <div style="position: absolute; left: -10px" class="z-10">
-                <svg width="10" height="62" viewBox="0 0 12 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M0 58.0056C2.54174 60.4649 6.60001 62.3737 11.461 63.3333V44.0115H2.60662C1.61954 44.6275 0.744681 45.3008 0 46.0213V58.0056Z"
-                        fill="#505050" />
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M0 44.0115H11.461V50.0458C11.1904 50.024 10.9175 50.013 10.6424 50.013C6.09323 50.013 2.12186 53.0354 0 57.5264V44.0115Z"
-                        fill="#BA0122" />
-                    <path d="M0 8C0 3.58172 3.58172 0 8 0H12V45H0V8Z" fill="#BA0122" />
-                </svg>
-                <svg width="20.5" height="49.2" viewBox="0 0 25 53" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    style=" position: absolute; top: 1px; left: 118.5px">
-                    <path d="M25 26.5L0.25 52.0477L0.250004 0.952251L25 26.5Z" fill="#BA0122" />
-                </svg>
-            </div>
             <div class="prod-images">
-                <img src="<?= $prodLeft['imgPath'] ?>" alt="">
+                <img class="w-full  flex items-center h-[250px] w-[250px] object-cover" src="<?= $prodLeft['imgPath'] ?>" alt="">
             </div>
             <div class="prod-info">
                 <div class="prod-detail">
@@ -397,7 +380,8 @@ $newsList = $news->getData();
                     <span class="prod-cate">
                         <?= $prodLeft['cateName'] ?>
                     </span>
-                    <div class="prod-price">
+                    <span class="text-[13px] overflow-hidden h-[80px] text-[#505050]"><?=$prodLeft['prodDescrip']?></span>
+                    <div class="prod-price pt-3">
                         <span class="price-sale">
                             <?= number_format($prodLeft['prodPriceSale']) ?>đ
                         </span>
@@ -406,7 +390,7 @@ $newsList = $news->getData();
                         </span>
                     </div>
                 </div>
-                <form action="">
+                <!-- <form action="">
                     <div class="plus-number">
                         <button>
                             <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
@@ -430,7 +414,7 @@ $newsList = $news->getData();
                         </button>
                     </div>
                     <button type="submit">Thêm vào giỏ hàng</button>
-                </form>
+                </form> -->
             </div>
         </div>
         <div class="home-sale-right">
@@ -486,16 +470,14 @@ $newsList = $news->getData();
                 </div>
             <?php endforeach; ?>
         </div>
-        <button class="show-more"
-            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php'"
-            style="z-index: 10; font-style: normal; font-weight: 600; font-size: 14px; right:-10px">
+        <span class="text-[13px] flex justify-end cursor-pointer" onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?new='">
             Xem tất cả
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M7.09327 3.6921C7.35535 3.46746 7.74991 3.49781 7.97455 3.75989L12.9745 9.59323C13.1752 9.82728 13.1752 10.1727 12.9745 10.4067L7.97455 16.24C7.74991 16.5021 7.35535 16.5325 7.09327 16.3078C6.83119 16.0832 6.80084 15.6886 7.02548 15.4266L11.6768 9.99997L7.02548 4.57338C6.80084 4.3113 6.83119 3.91674 7.09327 3.6921Z"
                     fill="#505050" />
             </svg>
-        </button>
+        </span>
     </div>
     <div class="home-product-new">
         <div class="title">SẢN PHẨM NỘI ĐỊA</div>
@@ -523,16 +505,15 @@ $newsList = $news->getData();
                 </div>
             <?php endforeach; ?>
         </div>
-        <button class="show-more"
-            onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php'"
-            style="z-index: 10; font-style: normal; font-weight: 600; font-size: 14px; right:-10px">
+        <span class="text-[13px] flex justify-end cursor-pointer"
+        onclick="window.location.href='http://localhost/PharmaDI-Enduser/product/product-list.php?country=Vietnam'">
             Xem tất cả
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M7.09327 3.6921C7.35535 3.46746 7.74991 3.49781 7.97455 3.75989L12.9745 9.59323C13.1752 9.82728 13.1752 10.1727 12.9745 10.4067L7.97455 16.24C7.74991 16.5021 7.35535 16.5325 7.09327 16.3078C6.83119 16.0832 6.80084 15.6886 7.02548 15.4266L11.6768 9.99997L7.02548 4.57338C6.80084 4.3113 6.83119 3.91674 7.09327 3.6921Z"
                     fill="#505050" />
             </svg>
-        </button>
+        </span>
     </div>
     <div class="home-news">
         <div class="title">TIN TỨC GẦN ĐÂY</div>
