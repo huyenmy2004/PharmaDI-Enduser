@@ -1,175 +1,125 @@
 <?php
-    require_once 'pdo.php';
-    require_once '../components/header.php';
-    $id = $_GET['id'];
-    $getinf = new Query();
-    $products = $getinf->select($id);
-    $getBrand = new Query();
-    $brands = $getBrand->select_brand($id);
+require_once "order-pdo.php";
+$order = new Order();
+// print_r($order->detail($_GET['orderId']));
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Đơn Hàng</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./asset/image/logo-shortcut.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="order.css">
-    <!-- <link rel="stylesheet" href="font_backgroud.css"> -->
-    <link rel="stylesheet" href="order-detail.css">
+    <title>Chi tiết đơn hàng</title>
+    <script src="cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <!-- MENU  -->
 
-    <!-- CONTENT  -->
-    <div class="content">
-    <div class="order-list">
-        <div class="order-list-showcase">
-            <a href="order.php"><i class="fa-solid fa-arrow-left"></i></a>
-            <h1 class="order-list-showcase-title">CHI TIẾT ĐƠN HÀNG</h1>
-        </div>
-            <?php 
-                $i = 1;
-                foreach ($products as $product) : 
-                    if($i == 1) { $i++;
-            ?>
-        <div class="showcase-detali">
-            <div>
-                <span class="showcase-detail-box-intro">Tên nhà thuốc</span>
-                <div class="showcase-detali-box">
-                <p class="showcase-detail-box-inf"><?= $product['brandName'] ?></p>
+<body class="bg-[#F4F7FC]">
+    <?php require_once "../components/header.php"; ?>
+    <div class="flex justify-center">
+        <div class="bg-white flex flex-col m-12 p-8 rounded-[10px] max-w-max max-h-max">
+            <div class="flex items-center cursor-pointer">
+            <svg onclick="window.location.href='http://localhost/PharmaDI-Enduser/order/order-list.php?status=0'"
+            width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1.09327 0.692102C1.35535 0.467463 1.74991 0.497814 1.97455 0.759893L6.97455 6.59323C7.17517 6.82728 7.17517 7.17266 6.97455 7.40672L1.97455 13.24C1.74991 13.5021 1.35535 13.5325 1.09327 13.3078C0.831188 13.0832 0.800837 12.6886 1.02548 12.4266L5.67684 6.99997L1.02548 1.57338C0.800837 1.3113 0.831188 0.916741 1.09327 0.692102Z"
+                                fill="#0071AF" />
+                        </svg>
+                <span class="text-[18px] font-[600] text-[#0071AF] pl-2">ĐƠN HÀNG CỦA BẠN</span>
+            </div>
+            <div class="flex mt-3">
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Tên nhà thuốc</span>
+                    <input type="text" value="<?= $order->detail($_GET['orderId'])[0]['cusName'] ?>" readonly
+                        width="350px"
+                        class="mr-14 px-2.5 pl-[10px] py-[6px] w-[400px] border border-solid border-[#d8d8d8] rounded-[6px] focus-within:border-[#0071AF] focus-within:border focus-within:border-solid outline-0 text-[13px]">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Người liên hệ</span>
+                    <input type="text" value="<?= $order->detail($_GET['orderId'])[0]['cusContact'] ?>" readonly
+                        width="350px"
+                        class="px-2.5 pl-[10px] py-[6px] w-[400px] border border-solid border-[#d8d8d8] rounded-[6px] focus-within:border-[#0071AF] focus-within:border focus-within:border-solid outline-0 text-[13px]">
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Ngày đặt hàng</span>
+                    <input type="text" value="<?= $order->detail($_GET['orderId'])[0]['orderDate'] ?>" readonly
+                        width="350px"
+                        class="mr-14 px-2.5 pl-[10px] py-[6px] w-[400px] border border-solid border-[#d8d8d8] rounded-[6px] focus-within:border-[#0071AF] focus-within:border focus-within:border-solid outline-0 text-[13px]">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Trạng thái đơn hàng</span>
+                    <input type="text"
+                        value="<?= $order->detail($_GET['orderId'])[0]['orderStatus'] == 1 ? "Chờ xác nhận" : ($order->detail($_GET['orderId'])[0]['orderStatus'] == 2 ? "Đã xác nhận" : ($order->detail($_GET['orderId'])[0]['orderStatus'] == 3 ? "Đang giao hàng" : ($order->detail($_GET['orderId'])[0]['orderStatus'] == 4 ? "Đã giao hàng" : "Đã huỷ"))) ?>"
+                        readonly width="350px"
+                        class="px-2.5 pl-[10px] py-[6px] w-[400px] border border-solid border-[#d8d8d8] rounded-[6px] focus-within:border-[#0071AF] focus-within:border focus-within:border-solid outline-0 text-[13px]">
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Số điện thoại</span>
+                    <input type="text" value="<?= $order->detail($_GET['orderId'])[0]['cusPhone'] ?>" readonly
+                        width="350px"
+                        class="mr-14 px-2.5 pl-[10px] py-[6px] w-[400px] border border-solid border-[#d8d8d8] rounded-[6px] focus-within:border-[#0071AF] focus-within:border focus-within:border-solid outline-0 text-[13px]">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Địa chỉ</span>
+                    <input type="text" value="<?= $order->detail($_GET['orderId'])[0]['cusAddress'] ?>" readonly
+                        width="350px"
+                        class="px-2.5 pl-[10px] py-[6px] w-[400px] border border-solid border-[#d8d8d8] rounded-[6px] focus-within:border-[#0071AF] focus-within:border focus-within:border-solid outline-0 text-[13px]">
                 </div>
             </div>
             <div>
-                <span class="showcase-detail-box-intro">Tên người liên hệ</span>
-                <div class="showcase-detali-box">
-                <p class="showcase-detail-box-inf"><?= $product['cusName'] ?></p>
-                </div>
+                <span class="text-[14px] font-[500] text-[#505050] py-1 pt-2 ml-2">Ghi chú</span>
+                <input type="text" value="<?= $order->detail($_GET['orderId'])[0]['orderNote'] ?>" readonly
+                    class="flex border border-solid rounded-[6px] border-[#d8d8d8] px-2.5 w-full h-[50px]">
             </div>
-            <div>
-                <span class="showcase-detail-box-intro">Ngày đặt hàng</span>
-                <div class="showcase-detali-box">
-                <p class="showcase-detail-box-inf"><?= $product['orderDate'] ?></p>
-                </div>
-            </div>
-            <div>
-                <span class="showcase-detail-box-intro">Trạng thái đơn hàng</span>
-                <div class="showcase-detali-box">
-                <p class="showcase-detail-box-inf">
-                    <?php if($product['orderStatus'] == 1) echo "Chờ xác nhận";
-                        else if($product['orderStatus'] == 2) echo "Đã xác nhận";
-                        else if($product['orderStatus'] == 3) echo "Đang giao hàng";
-                        else if($product['orderStatus'] == 4) echo "Đã giao hàng";
-                        else if($product['orderStatus'] == 5) echo "Huỷ đơn hàng";
-                    ?>
-                </p>
-                </div>
-            </div>
-            <div>
-                <span class="showcase-detail-box-intro">Số điện thoại</span>
-                <div class="showcase-detali-box">
-                <p class="showcase-detail-box-inf"><?= $product['cusPhone'] ?></p>
-                </div>
-            </div>
-            <div>
-                <span class="showcase-detail-box-intro">Địa chỉ</span>
-                <div class="showcase-detali-box">
-                <p class="showcase-detail-box-inf"><?= $product['cusGPPAddr'] ?></p>
-                </div>
-            </div>
-            <div>
-                <span class="showcase-detail-box-intro">Ghi chú</span>
-                <div class="showcase-detali-box-note">
-                <p class="showcase-detail-box-inf"><?php if($product['orderNote'] != "") echo $product['orderNote'];
-                else echo "Trống";?></p>
-                </div>
-            </div>
-        </div>
-        <?php } endforeach; ?>
-
-        <?php 
-                foreach ($brands as $brand) :   
-            ?>
-            <div class="order-list-brand">
-                <div class="order-list-brand-img"><img src="" alt=""><span><?= $brand['brandName'] ?></span></div>
-                <div>
-                    <ul class="order-list-brand-title">
-                        <li class="order-list-brand-title-name">Tên sản phẩm</li>
-                        <li class="order-list-brand-title-num">Số lượng</li>
-                        <li class="order-list-brand-title-price">Giá tiền</li>
-                    </ul>
-                </div>
-                <?php 
-                foreach ($products as $product) : 
-                        
-                        if($brand['brandId'] == $product['brandId']) {
-                ?>
-                <div class="order-list-brand-detail">
-                    <div class="order-list-brand-item">
-                        <img class="order-list-brand-item-img" src="<?= $product['imgPath'] ?>" alt="">
-                        <div class="order-list-brand-item-des">
-                            <span class="order-list-brand-item-des"><?= $product['prodName'] ?></span>
-                            <p class="order-list-brand-item-title"><?= $product['prodUnit'] ?></p>
-                        </div>
-                        <p class="order-list-brand-item-num"><?= $product['prodNumber'] ?></p>
-                        <div class="order-list-brand-item-price"><?= number_format($product['prodOldPrice']) ?> (VND)</div>
+            <div class="flex flex-col mt-4 border border-solid border-[#d8d8d8] py-4 px-6 rounded-[6px] text-[#505050]">
+                <?php foreach ($order->brandInOrder($_GET['orderId']) as $brand): ?>
+                    <span class="text-[18px] font-[600] text-[#505050] pb-2">
+                        <?= $brand['brandName'] ?>
+                    </span>
+                    <div class="flex grid grid-cols-12 text-[13px] pt-2 pb-2 border-solid border-[#f6f6f6] font-[600]">
+                        <span class="col-span-7">Tên sản phẩm</span>
+                        <span class="col-span-3">Số lượng</span>
+                        <span class="col-span-2">Đơn giá</span>
                     </div>
+                    <?php foreach ($order->detail($_GET['orderId']) as $v):
+                        if ($v['brandName'] == $brand['brandName'])
+                        ?>
+                        <div class="flex grid grid-cols-12 text-[13px] pt-2 border-t-2 pb-2 border-solid border-[#f6f6f6]">
+                            <div class="col-span-7 flex">
+                                <img class="object-cover h-[70px] w-[70px] pr-2" src="<?= $v['imgPath'] ?>" alt="">
+                                <span class="pl-2 pt-2">
+                                    <?= $v['prodName'] ?>
+                                </span>
+                            </div>
+                            <span class="col-span-3 pt-2">
+                                <?= $v['prodNumber'] ?>
+                            </span>
+                            <span class="col-span-2 pt-2">
+                                <?= number_format($v['prodOldPrice']) ?> VND
+                            </span>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endforeach ?>
+            </div>
+            <div class="flex flex-col text-[14px] border border-solid border-[#d8d8d8] rounded-[6px] py-2 mt-4 px-2.5">
+                <div class="flex justify-between pb-1">
+                    <span>Số lượng</span>
+                    <span>
+                        <?= $order->detail($_GET['orderId'])[0]['num'] ?> (sản phẩm)
+                    </span>
                 </div>
-                <?php }
-                
-                    endforeach; ?>
-            </div>
-            <?php endforeach; ?>
-
-        <?php 
-            $num = 0;
-            $total = 0;
-            $i = 1;
-            $max = count($products);
-            foreach ($products as $product) :
-                if($i == $max) {
-                $num = $num + $product['prodNumber'];
-                $total = $total + ($product['prodNumber'] * $product['prodOldPrice'])
-        ?>
-        <div class="order-detail-item-total">
-            <div class="order-detail-item-total-num">
-                <span class="title-num">Số lượng:</span>
-                <p class="total-num"><?= $num?> (sản phẩm)</p>
-            </div>
-            <div class="order-detail-item-total-detail">
-                <span class="title-detail">Thành tiền:</span>
-                <p class="total-detail"><?= number_format($total)?> (VND)</p>
+                <div class="flex justify-between">
+                    <span class="font-[600]"> Thành tiền </span>
+                    <span class="font-[600] text-[#0071AF]">
+                        <?= number_format($order->detail($_GET['orderId'])[0]['total']) ?> VND
+                    </span>
+                </div>
             </div>
         </div>
-        <?php } else $i++; 
-                $num = $num + $product['prodNumber'];
-                $total = $total + ($product['prodNumber'] * $product['prodOldPrice']);
-            endforeach; ?>
-
-        <?php if($product['orderStatus'] == 1) {?>
-            <div class="cancel-button"><button onclick="confirmCancle()">Huỷ đơn hàng</button></div>
-                <div class="popup">
-                    <div class="confirm-popup">
-                        <span>XÁC NHẬN HUỶ ĐƠN HÀNG?</span>
-                        <p>Bạn chắc chắn muốn huỷ đơn hàng đã chọn?</p>
-                        <div class="confirm-popup-button">
-                            <button class="confirm-popup-cancel" onclick="closePopup()">Huỷ bỏ</button>
-                            <form method="POST" action="changeStatus.php">
-                                <input type="hidden" value="<?= $product['orderId'] ?>" name="id">
-                                <button type = "submit" class="confirm-popup-delete">Xác nhận</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-        <?php } ?>
-    </div> 
     </div>
-    <script src="app.js"></script>
-    <?php require_once '../components/footer.php'; ?>
 </body>
+
 </html>

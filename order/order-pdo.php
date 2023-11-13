@@ -34,7 +34,7 @@ class Order extends Connection
         return $select->fetchAll();
     }
     public function detail($order){
-        $sql = "SELECT * FROM product INNER JOIN product_order ON product.SKU = product_order.SKU 
+        $sql = "SELECT *, SUM(prodNumber) AS num, SUM(prodNumber*prodOldPrice) AS total FROM product INNER JOIN product_order ON product.SKU = product_order.SKU 
         INNER JOIN orders ON product_order.orderId = orders.orderId 
         INNER JOIN customer ON orders.cusId = customer.cusId
         INNER JOIN product_img ON product_img.SKU = product.SKU

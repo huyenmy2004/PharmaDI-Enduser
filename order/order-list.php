@@ -47,7 +47,7 @@ $order = new Order();
                 foreach ($order->getDataByStatus($_GET['status']) as $v) : 
             ?>
             <div class="mt-3 w-full border border-solid py-4 px-4 rounded-[10px] flex flex-col">
-                <div class="flex w-full" onclick="window.location.href='http://localhost/PharmaDI-Enduser/order/orders-detail.php?orderId=<?=$v['orderId']?>'">
+                <div class="flex w-full" onclick="window.location.href='http://localhost/PharmaDI-Enduser/order/order-detail.php?orderId=<?=$v['orderId']?>'">
                     <img src="<?= $v['imgPath'] ?>" alt="" class="mr-3 w-full object-cover h-[90px] max-w-[90px] bg-red">
                     <div class="flex flex-col w-full">
                         <span
