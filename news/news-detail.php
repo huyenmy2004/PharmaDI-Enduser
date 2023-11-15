@@ -131,7 +131,7 @@ textarea.vertical {
             <div class="news-detail-content">
                 <img src="<?= $news1['newsImage'] ?>" alt="">
                 <span style="font-weight: 600; padding-bottom: 20px; font-size: 18px; "><?= $news1['newsTitle'] ?></span>
-                <textarea class="vertical" type="text">
+                <textarea class="vertical outline-none" type="text" readonly>
                 <?= $news1['newsContent'] ?></textarea>
             </div>
             <div class="news-detail-more-post">
