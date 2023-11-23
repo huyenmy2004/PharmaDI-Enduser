@@ -7,6 +7,7 @@ $user = $account->login($_POST['username'], $_POST['pass']);
 if(count($user) == 1 ){
     $_SESSION['username'] = $user[0]['username'];
     $_SESSION['cusId'] = $user[0]['cusId'];
+    $_SESSION['cusStatus'] = $user[0]['cusStatus'];
     $_SESSION['cartId'] = $user[0]['cartId'];
     $_SESSION['role'] = $user[0]['role'];
     if ($_SESSION['role']==0){

@@ -171,7 +171,7 @@ $newsList = $news->getData();
                 </svg>
             </div>
             <div class="news-breadcrumb-blue">
-                <span>Tin tức</span>
+                <span>Quảng cáo</span>
             </div>
         </div>
         <div class="news-list-posts">

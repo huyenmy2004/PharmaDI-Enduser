@@ -229,8 +229,7 @@ $cartTotalNum = $cart->totalNum();
             onclick="menuActive('product')">SẢN PHẨM</a>
         <a href="http://localhost/PharmaDI-Enduser/brand/brand-list.php" id="brand" onclick="menuActive('brand')">THƯƠNG
             HIỆU</a>
-        <a href="http://localhost/PharmaDI-Enduser/news/news-list.php" id="news" onclick="menuActive('news')">TIN
-            TỨC</a>
+        <a href="http://localhost/PharmaDI-Enduser/news/news-list.php" id="news" onclick="menuActive('news')">QUẢNG CÁO</a>
     </div>
 </div>
 <script>
